@@ -6,7 +6,9 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "asantibanez/livewire-charts": "^2.3",
         "barryvdh/laravel-dompdf": "^0.9.0",
+        "consoletvs/charts": "^7.2",
         "davmixcool/laravel-meta-manager": "^1.2",
         "diglactic/laravel-breadcrumbs": "^7.0",
         "fruitcake/laravel-cors": "^2.0",
@@ -16,7 +18,9 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.7",
+        "mbezhanov/faker-provider-collection": "^2.0",
         "owen-it/laravel-auditing": "^12.0",
+        "power-components/livewire-powergrid": "^1.4",
         "protonemedia/laravel-form-components": "^3.2",
         "silviolleite/laravelpwa": "^2.0"
     },
