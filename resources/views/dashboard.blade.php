@@ -42,7 +42,41 @@
                         </div>
                     </div>
                 </section>
+                <section class="text-gray-600 body-font">
+                    <div class="container px-5 py-8 mx-auto">
+                        <div class="container p-4 mx-auto mt-8 space-y-4 sm:p-0">
+                            <div class="flex">
+                                <div class="m-auto">
+                                    <h3 class="text-xl font-semibold leading-tight text-gray-800">Patients Count Doctor
+                                        Wise</h3>
+                                </div>
+                            </div>
+                            <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                                <div class="flex-1 p-4 bg-white border rounded shadow" style="height: 32rem;">
+                                    <livewire:livewire-column-chart :column-chart-model="$columnChartModel1" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container p-4 mx-auto mt-8 space-y-4 sm:p-0">
+                            <div class="flex">
+                                <div class="m-auto">
+                                    <h3 class="text-xl font-semibold leading-tight text-gray-800">Patients Count Ummah
+                                        Wise</h3>
+                                </div>
+                            </div>
+                            <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                                <div class="flex-1 p-4 bg-white border rounded shadow" style="height: 32rem;">
+                                    <livewire:livewire-column-chart :column-chart-model="$columnChartModel2" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        @livewireChartsScripts
+    @endpush
 </x-app-layout>

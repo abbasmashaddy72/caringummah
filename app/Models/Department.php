@@ -17,4 +17,9 @@ class Department extends Model
     protected $casts = [
         'status' => 'boolean'
     ];
+
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
 }

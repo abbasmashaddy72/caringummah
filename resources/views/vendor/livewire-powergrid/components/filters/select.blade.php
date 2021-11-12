@@ -25,7 +25,7 @@
                     @endforeach
                 </select>
                 <div class="{{ $theme->relativeDivClass }}">
-                    <x-livewire-powergrid::icons.down class="w-4 h-4"/>
+                    <x-livewire-powergrid::icons.down/>
                 </div>
             </div>
         </div>
