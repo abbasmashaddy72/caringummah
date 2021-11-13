@@ -2,21 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AppointmentRequest;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +15,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('forms/appointment_ea');
     }
 
     /**
@@ -33,9 +24,16 @@ class AppointmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AppointmentRequest $request)
     {
-        //
+        $request->validated();
+        Appointment::create([
+            'description' => $request->description,
+            'appointment_date' => $request->appointment_date,
+            'doctor_id' => 1,
+            'patient_id' => 1,
+        ]);
+        return redirect()->route('appointments')->with('message', 'Patient Added Successfully');
     }
 
     /**

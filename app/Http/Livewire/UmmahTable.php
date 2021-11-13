@@ -131,23 +131,23 @@ class UmmahTable extends PowerGridComponent
     |
     */
 
-    /*
+
     public function actions(): array
     {
-       return [
-           Button::add('edit')
-               ->caption(__('Edit'))
-               ->class('bg-indigo-500 text-white')
-               ->route('ummah.edit', ['ummah' => 'id']),
+        return [
+            Button::add('edit')
+                ->caption(__('Edit'))
+                ->class('bg-blue-500 hover:bg-blue-700 text-white text-center py-1 px-2 rounded')
+                ->route('ummah.edit', ['id' => 'id']),
 
-           Button::add('destroy')
-               ->caption(__('Delete'))
-               ->class('bg-red-500 text-white')
-               ->route('ummah.destroy', ['ummah' => 'id'])
-               ->method('delete')
+            Button::add('destroy')
+                ->caption(__('Delete'))
+                ->class('bg-red-500 hover:bg-red-700 text-white text-center py-1 px-2 rounded')
+                ->route('ummah.destroy', ['id' => 'id'])
+                ->method('delete')
         ];
     }
-    */
+
 
     /*
     |--------------------------------------------------------------------------

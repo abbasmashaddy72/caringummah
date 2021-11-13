@@ -14,6 +14,16 @@
 
     @livewireStyles
     @powerGridStyles
+    <style>
+        .hover\:bg-red-700:hover {
+            background-color: #c53030;
+        }
+
+        .bg-red-500 {
+            background-color: #f56565;
+        }
+
+    </style>
 
     <script src="{{ mix('js/app.js') }}" defer></script>
     @laravelPWA
@@ -32,6 +42,12 @@
                 </div>
             </header>
         @endif
+
+        <div class="max-w-full py-4 mx-auto sm:px-6 lg:px-8">
+            <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
+                @include('components.message')
+            </div>
+        </div>
 
         <main>
             {{ $slot }}

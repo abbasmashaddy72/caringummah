@@ -16,6 +16,7 @@ class Doctor extends Model
         'phone',
         'clinic_hospital_name',
         'clinic_hospital_address',
+        'clinic_hospital_phone',
         'monthly_slots',
         'extra_services',
         'suggestions'

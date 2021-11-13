@@ -24,7 +24,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        return view('forms/patient_ea');
     }
 
     /**
@@ -35,7 +35,16 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validated();
+        Patient::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'relation' => $request->relation,
+            'location' => $request->location,
+            'ummah_id' => 1,
+        ]);
+
+        return redirect()->route('patients')->with('message', 'Patient Added Successfully');
     }
 
     /**

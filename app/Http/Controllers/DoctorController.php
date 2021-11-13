@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DoctorRequest;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        return view('forms/doctor_ea');
     }
 
     /**
@@ -33,9 +34,23 @@ class DoctorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DoctorRequest $request)
     {
-        //
+        $request->validated();
+        Doctor::create([
+            'name' => $request->name,
+            'qualification' => $request->qualification,
+            'phone' => $request->phone,
+            'clinic_hospital_name' => $request->hospital_name,
+            'clinic_hospital_address' => $request->hospital_address,
+            'clinic_hospital_phone' => $request->hospital_phone,
+            'monthly_slots' => $request->monthly_slots,
+            'extra_services' => $request->extra_services,
+            'suggestions' => $request->suggestions,
+
+            'department_id' => 1,
+        ]);
+        return redirect()->route('doctors')->with('message', 'Doctor Added Successfully');
     }
 
     /**

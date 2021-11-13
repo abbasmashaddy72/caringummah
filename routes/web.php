@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\UmmahController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,4 +40,28 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/appointments', function () {
         return view('appointments');
     })->name('appointments');
+
+    Route::get('doctor/create', [DoctorController::class, 'create'])->name('doctor.create');
+    Route::post('doctor/store', [DoctorController::class, 'store'])->name('doctor.store');
+    Route::get('doctor/edit/{id}', [DoctorController::class, 'edit'])->name('doctor.edit');
+    Route::post('doctor/update/{id}', [DoctorController::class, 'update'])->name('doctor.update');
+    Route::post('doctor/destroy/{id}', [DoctorController::class, 'destroy'])->name('doctor.destroy');
+
+    Route::get('ummah/create', [UmmahController::class, 'create'])->name('ummah.create');
+    Route::post('ummah/store', [UmmahController::class, 'store'])->name('ummah.store');
+    Route::get('ummah/edit/{id}', [UmmahController::class, 'edit'])->name('ummah.edit');
+    Route::post('ummah/update/{id}', [UmmahController::class, 'update'])->name('ummah.update');
+    Route::post('ummah/destroy/{id}', [UmmahController::class, 'destroy'])->name('ummah.destroy');
+
+    Route::get('patient/create', [PatientController::class, 'create'])->name('patient.create');
+    Route::post('patient/store', [PatientController::class, 'store'])->name('patient.store');
+    Route::get('patient/edit/{id}', [PatientController::class, 'edit'])->name('patient.edit');
+    Route::post('patient/update/{id}', [PatientController::class, 'update'])->name('patient.update');
+    Route::post('patient/destroy/{id}', [PatientController::class, 'destroy'])->name('patient.destroy');
+
+    Route::get('appointment/create', [AppointmentController::class, 'create'])->name('appointment.create');
+    Route::post('appointment/store', [AppointmentController::class, 'store'])->name('appointment.store');
+    Route::get('appointment/edit/{id}', [AppointmentController::class, 'edit'])->name('appointment.edit');
+    Route::post('appointment/update/{id}', [AppointmentController::class, 'update'])->name('appointment.update');
+    Route::post('appointment/destroy/{id}', [AppointmentController::class, 'destroy'])->name('appointment.destroy');
 });
