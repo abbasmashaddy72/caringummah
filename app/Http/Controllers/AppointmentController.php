@@ -96,8 +96,10 @@ class AppointmentController extends Controller
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Appointment $appointment)
+    public function destroy(Appointment $appointment, $id)
     {
-        //
+        Appointment::findOrFail($id)->delete();
+
+        return redirect()->route('appointments')->with('message', 'Appointment Deleted Successfully');
     }
 }

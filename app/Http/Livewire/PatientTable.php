@@ -129,17 +129,17 @@ class PatientTable extends PowerGridComponent
 
     public function actions(): array
     {
-       return [
-           Button::add('edit')
-               ->caption(__('Edit'))
+        return [
+            Button::add('edit')
+                ->caption(__('Edit'))
                 ->class('bg-blue-500 hover:bg-blue-700 text-white text-center py-1 px-2 rounded')
-               ->route('patient.edit', ['id' => 'id']),
+                ->route('patient.edit', ['id' => 'id']),
 
-           Button::add('destroy')
-               ->caption(__('Delete'))
+            Button::add('destroy')
+                ->caption(__('Delete'))
                 ->class('bg-red-500 hover:bg-red-700 text-white text-center py-1 px-2 rounded')
-               ->route('patient.destroy', ['id' => 'id'])
-               ->method('delete')
+                ->route('patient.destroy', ['id' => 'id'])
+                ->method('post')
         ];
     }
 

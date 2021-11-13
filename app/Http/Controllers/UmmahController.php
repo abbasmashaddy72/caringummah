@@ -122,8 +122,10 @@ class UmmahController extends Controller
      * @param  \App\Models\Ummah  $ummah
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ummah $ummah)
+    public function destroy(Ummah $ummah, $id)
     {
-        //
+        Ummah::findOrFail($id)->delete();
+
+        return redirect()->route('ummahs')->with('message', 'Ummah Deleted Successfully');
     }
 }

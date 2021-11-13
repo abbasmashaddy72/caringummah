@@ -115,8 +115,10 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Doctor $doctor)
+    public function destroy(Doctor $doctor, $id)
     {
-        //
+        Doctor::findOrFail($id)->delete();
+
+        return redirect()->route('doctors')->with('message', 'Doctor Deleted Successfully');
     }
 }
