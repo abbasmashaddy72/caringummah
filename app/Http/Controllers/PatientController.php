@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PatientRequest;
 use App\Models\Patient;
+use App\Models\Ummah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class PatientController extends Controller
 {
@@ -24,7 +27,10 @@ class PatientController extends Controller
      */
     public function create()
     {
-        return view('forms/patient_ea');
+        $action = URL::route('patient.store');
+        $ummah = Ummah::get();
+
+        return view('forms/patient_ea', compact('action', 'ummah'));
     }
 
     /**
@@ -33,7 +39,7 @@ class PatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PatientRequest $request)
     {
         $request->validated();
         Patient::create([
@@ -64,9 +70,13 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function edit(Patient $patient)
+    public function edit(Patient $patient, $id)
     {
-        //
+        $action = URL::route('patient.update', ['id' => $id]);
+        $ummah = Ummah::get();
+        $data = Patient::findOrFail($id);
+
+        return view('forms/patient_ea', compact('action', 'data', 'ummah'));
     }
 
     /**
@@ -76,9 +86,18 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(PatientRequest $request, Patient $patient, $id)
     {
-        //
+        $request->validated();
+        Patient::findOrFail($id)->update([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'relation' => $request->relation,
+            'location' => $request->location,
+            'ummah_id' => $request->ummah_id,
+        ]);
+
+        return redirect()->route('patients')->with('message', 'Patient Updated Successfully');
     }
 
     /**

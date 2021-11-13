@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AppointmentRequest;
 use App\Models\Appointment;
+use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class AppointmentController extends Controller
 {
@@ -15,7 +18,11 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('forms/appointment_ea');
+        $action = URL::route('appointment.store');
+        $patient = Patient::get();
+        $doctor = Doctor::get();
+
+        return view('forms/appointment_ea', compact('action', 'doctor', 'patient'));
     }
 
     /**
@@ -30,8 +37,8 @@ class AppointmentController extends Controller
         Appointment::create([
             'description' => $request->description,
             'appointment_date' => $request->appointment_date,
-            'doctor_id' => 1,
-            'patient_id' => 1,
+            'doctor_id' => $request->doctor_id,
+            'patient_id' => $request->patient_id,
         ]);
         return redirect()->route('appointments')->with('message', 'Patient Added Successfully');
     }
@@ -53,9 +60,14 @@ class AppointmentController extends Controller
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Appointment $appointment)
+    public function edit(Appointment $appointment, $id)
     {
-        //
+        $action = URL::route('appointment.update', ['id' => $id]);
+        $data = Appointment::findOrFail($id);
+        $patient = Patient::get();
+        $doctor = Doctor::get();
+
+        return view('forms/appointment_ea', compact('action', 'data', 'patient', 'doctor'));
     }
 
     /**
@@ -65,9 +77,17 @@ class AppointmentController extends Controller
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Appointment $appointment)
+    public function update(AppointmentRequest $request, Appointment $appointment, $id)
     {
-        //
+        $request->validated();
+        Appointment::findOrFail($id)->update([
+            'description' => $request->description,
+            'appointment_date' => $request->appointment_date,
+            'doctor_id' => $request->doctor_id,
+            'patient_id' => $request->patient_id,
+        ]);
+
+        return redirect()->route('appointments')->with('message', 'Patient Updated Successfully');
     }
 
     /**

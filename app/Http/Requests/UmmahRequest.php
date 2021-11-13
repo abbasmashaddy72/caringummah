@@ -31,7 +31,6 @@ class UmmahRequest extends FormRequest
             'occupation' => ['required', 'min:1'],
             'member_count' => ['required', 'min:1'],
             'family_members' => ['required', 'min:1'],
-            'attachments' => ['required', 'mimes:png,jpg,jpeg', 'max:5048'],
         ];
     }
 }

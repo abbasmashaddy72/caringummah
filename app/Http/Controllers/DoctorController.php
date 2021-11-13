@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DoctorRequest;
+use App\Models\Department;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class DoctorController extends Controller
 {
@@ -25,7 +27,10 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('forms/doctor_ea');
+        $dept_data = Department::get();
+        $action = URL::route('doctor.store');
+
+        return view('forms/doctor_ea', compact('dept_data', 'action'));
     }
 
     /**
@@ -47,8 +52,7 @@ class DoctorController extends Controller
             'monthly_slots' => $request->monthly_slots,
             'extra_services' => $request->extra_services,
             'suggestions' => $request->suggestions,
-
-            'department_id' => 1,
+            'department_id' => $request->department_id,
         ]);
         return redirect()->route('doctors')->with('message', 'Doctor Added Successfully');
     }
@@ -70,9 +74,13 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Doctor $doctor)
+    public function edit(Doctor $doctor, $id)
     {
-        //
+        $data = $doctor->findOrFail($id);
+        $dept_data = Department::get();
+        $action = URL::route('doctor.update', ['id' => $id]);
+
+        return view('forms/doctor_ea', compact('data', 'dept_data', 'action'));
     }
 
     /**
@@ -82,9 +90,23 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update(DoctorRequest $request, $id)
     {
-        //
+        $request->validated();
+        // dd($request->all());
+        Doctor::findOrFail($id)->update([
+            'name' => $request->name,
+            'qualification' => $request->qualification,
+            'phone' => $request->phone,
+            'clinic_hospital_name' => $request->hospital_name,
+            'clinic_hospital_address' => $request->hospital_address,
+            'clinic_hospital_phone' => $request->hospital_phone,
+            'monthly_slots' => $request->monthly_slots,
+            'extra_services' => $request->extra_services,
+            'suggestions' => $request->suggestions,
+            'department_id' => $request->department_id,
+        ]);
+        return redirect()->route('doctors')->with('message', 'Doctor Updated Successfully');
     }
 
     /**

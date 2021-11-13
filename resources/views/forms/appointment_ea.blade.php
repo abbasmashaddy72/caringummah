@@ -7,13 +7,37 @@
     <div class="py-12">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
-                <form method="POST" action="{{ route('appointment.store') }}">
+                <form method="POST" action="{{ $action }}">
                     @csrf
+                    <div class="w-1/2 p-2">
+                        <div class="relative">
+                            <label for="name" class="text-sm leading-7 text-gray-600">Relation</label>
+                            <select name="doctor_id"
+                                class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+                                @foreach ($doctor as $item)
+                                    <option value="{{ $item->id }}" @if (!empty($data->doctor_id) &&  $data->doctor_id == $item->id) selected @endif>
+                                        {{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="w-1/2 p-2">
+                        <div class="relative">
+                            <label for="name" class="text-sm leading-7 text-gray-600">Relation</label>
+                            <select name="patient_id"
+                                class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+                                @foreach ($patient as $item)
+                                    <option value="{{ $item->id }}" @if (!empty($data->patient_id) && $data->patient_id == $item->id) selected @endif>
+                                        {{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <div class="w-full p-2">
                         <div class="relative">
                             <label for="name" class="text-sm leading-7 text-gray-600">Description</label>
-                            <input type="text" id="name" name="description"
-                                class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+                            <textarea id="message" name="description"
+                                        class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">{{ $data->description ?? '' }}</textarea>
                         </div>
                     </div>
                     <div class="w-full p-2">
@@ -26,7 +50,7 @@
                                             Date</label>
                                         <div class="relative">
                                             <input name="appointment_date" type="hidden" name="date" x-ref="date"
-                                                :value="datepickerValue" />
+                                                :value="datepickerValue"/>
                                             <input name="appointment_date" type="text"
                                                 x-on:click="showDatepicker = !showDatepicker" x-model="datepickerValue"
                                                 x-on:keydown.escape="showDatepicker = false"

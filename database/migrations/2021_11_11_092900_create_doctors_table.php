@@ -18,7 +18,7 @@ class CreateDoctorsTable extends Migration
             $table->string('name');
             $table->foreignId('department_id')->constrained('departments')->onUpdate('cascade')->onDelete('cascade');
             $table->string('qualification');
-            $table->bigInteger('phone');
+            $table->bigInteger('phone')->unique();
             $table->string('clinic_hospital_name');
             $table->longText('clinic_hospital_address');
             $table->bigInteger('clinic_hospital_phone');

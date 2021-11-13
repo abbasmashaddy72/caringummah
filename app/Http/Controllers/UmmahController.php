@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UmmahRequest;
 use App\Models\Ummah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 
 class UmmahController extends Controller
@@ -26,7 +27,9 @@ class UmmahController extends Controller
      */
     public function create()
     {
-        return view('forms/ummah_ea');
+        $action = URL::route('ummah.store');
+
+        return view('forms/ummah_ea', compact('action'));
     }
 
     /**
@@ -53,8 +56,6 @@ class UmmahController extends Controller
             'member_count' => $request->member_count,
             'family_members' => $request->family_members,
             'attachments' => $newImageName,
-
-            'department_id' => 1,
         ]);
         return redirect()->route('ummahs')->with('message', 'Ummah Added Successfully');
     }
@@ -76,9 +77,12 @@ class UmmahController extends Controller
      * @param  \App\Models\Ummah  $ummah
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ummah $ummah)
+    public function edit(Ummah $ummah, $id)
     {
-        //
+        $data = $ummah->findOrFail($id);
+        $action = URL::route('ummah.update', ['id' => $id]);
+
+        return view('forms/ummah_ea', compact('data', 'action'));
     }
 
     /**
@@ -88,9 +92,28 @@ class UmmahController extends Controller
      * @param  \App\Models\Ummah  $ummah
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ummah $ummah)
+    public function update(UmmahRequest $request, $id)
     {
-        //
+        $request->validated();
+        if (!empty($request->attachments)) {
+            $newImageName = Str::random(20) . '.' . $request->attachments->extension();
+            $request->attachments->move(public_path('assets/images/ummah'), $newImageName);
+        } else {
+            $newImageName = '01.png';
+        }
+
+        Ummah::findOrFail($id)->update([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'connected_with' => $request->connected_with,
+            'qualification' => $request->qualification,
+            'occupation' => $request->occupation,
+            'member_count' => $request->member_count,
+            'family_members' => $request->family_members,
+            'attachments' => $newImageName,
+        ]);
+
+        return redirect()->route('ummahs')->with('message', 'Ummah Updated Successfully');
     }
 
     /**

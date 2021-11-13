@@ -22,7 +22,8 @@ class CreateUmmahsTable extends Migration
         Schema::create('ummahs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('phone');
+            $table->bigInteger('phone')->unique();
+            $table->sting('photo')->nullable();
             $table->enum('connected_with', ['Masjid', 'Madarsa', 'School']);
             $table->string('qualification');
             $table->string('occupation');
