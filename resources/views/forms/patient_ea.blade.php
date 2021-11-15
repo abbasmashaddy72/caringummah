@@ -10,7 +10,7 @@
                 <form method="POST" action="{{ $action }}">
                     @csrf
                     <div class="mx-auto lg:w-1/2 md:w-2/3">
-                        <div class="flex flex-wrap -m-2">
+                        <div class="flex flex-wrap m-5">
                             <div class="w-1/2 p-2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Name</label>

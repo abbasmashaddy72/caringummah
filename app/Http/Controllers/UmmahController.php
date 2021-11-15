@@ -47,9 +47,17 @@ class UmmahController extends Controller
         } else {
             $newImageName = '01.png';
         }
+        if (!empty($request->photo)) {
+            $newImageName2 = Str::random(20) . '.' . $request->photo->extension();
+            $request->photo->move(public_path('assets/images/ummah'), $newImageName2);
+        } else {
+            $newImageName2 = '01.png';
+        }
+
         Ummah::create([
             'name' => $request->name,
             'phone' => $request->phone,
+            'photo' => $newImageName2,
             'connected_with' => $request->connected_with,
             'qualification' => $request->qualification,
             'occupation' => $request->occupation,

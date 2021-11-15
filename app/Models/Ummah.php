@@ -12,6 +12,7 @@ class Ummah extends Model
     protected $fillable = [
         'name',
         'phone',
+        'photo',
         'connected_with',
         'qualification',
         'occupation',

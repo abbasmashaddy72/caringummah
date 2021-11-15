@@ -16,10 +16,6 @@ class Appointment extends Model
         'appointment_date'
     ];
 
-    protected $casts = [
-        'appointment_date' => 'datetime:d M Y',
-    ];
-
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
