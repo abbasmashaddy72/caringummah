@@ -185,7 +185,7 @@
     <section class="py-8 bg-white border-b">
         <div class="container flex flex-wrap pt-4 pb-12 mx-auto">
             <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 ">
-                Title
+                Khidmaat
             </h1>
             <div class="w-full mb-4">
                 <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
@@ -193,15 +193,11 @@
             <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
                 <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow ">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                        <p class="w-full px-6 text-xs text-gray-600 md:text-sm">
-                            xGETTING STARTED
-                        </p>
                         <div class="w-full px-6 text-xl font-bold text-gray-800">
-                            Lorem ipsum dolor sit amet.
+                            Hidayyah for Ummah
                         </div>
                         <p class="px-6 mb-5 text-base text-gray-800">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                            at ipsum eu nunc commodo posuere et sit amet ligula.
+Learnings from the Quran , Hadith and Sunnah to guide us to straight path of success both in duniya and aaqirah
                         </p>
                     </a>
                 </div>
@@ -217,15 +213,11 @@
             <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
                 <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow ">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                        <p class="w-full px-6 text-xs text-gray-600 md:text-sm">
-                            xGETTING STARTED
-                        </p>
                         <div class="w-full px-6 text-xl font-bold text-gray-800">
-                            Lorem ipsum dolor sit amet.
+                            Doctors for Ummah
                         </div>
                         <p class="px-6 mb-5 text-base text-gray-800">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                            at ipsum eu nunc commodo posuere et sit amet ligula.
+                            Free consultation for Ulema (Molvi/Imam/Hafeez/Aalim) muazzan, their family members and poor people from qualified specialist doctors
                         </p>
                     </a>
                 </div>
@@ -241,15 +233,11 @@
             <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
                 <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow ">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                        <p class="w-full px-6 text-xs text-gray-600 md:text-sm">
-                            xGETTING STARTED
-                        </p>
                         <div class="w-full px-6 text-xl font-bold text-gray-800">
-                            Lorem ipsum dolor sit amet.
+                            Sunday Clinics for the Poor
                         </div>
                         <p class="px-6 mb-5 text-base text-gray-800">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                            at ipsum eu nunc commodo posuere et sit amet ligula.
+                            sunday clinics at 10 rupees for the poor with medications and labs at subsidised prices
                         </p>
                     </a>
                 </div>
@@ -264,87 +252,6 @@
             </div>
         </div>
     </section>
-    <!-- <section class="py-8 bg-gray-100">
-      <div class="container px-2 pt-4 pb-12 mx-auto text-gray-800">
-        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 ">
-          Pricing
-        </h1>
-        <div class="w-full mb-4">
-          <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
-        </div>
-        <div class="flex flex-col justify-center pt-12 my-12 sm:flex-row sm:my-4">
-          <div class="flex flex-col w-5/6 mx-auto mt-4 bg-white rounded-none lg:w-1/4 lg:mx-0 lg:rounded-l-lg">
-            <div class="flex-1 overflow-hidden text-gray-600 bg-white rounded-t rounded-b-none shadow ">
-              <div class="p-8 text-3xl font-bold text-center border-b-4">
-                Free
-              </div>
-              <ul class="w-full text-sm text-center">
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-              </ul>
-            </div>
-            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow ">
-              <div class="w-full pt-6 text-3xl font-bold text-center text-gray-600">
-                £0
-                <span class="text-base">for one user</span>
-              </div>
-              <div class="flex items-center justify-center">
-                <button class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105">
-                  Sign Up
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="z-10 flex flex-col w-5/6 mx-auto mt-4 bg-white rounded-lg shadow-lg lg:w-1/3 lg:mx-0 sm:-mt-6">
-            <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow ">
-              <div class="w-full p-8 text-3xl font-bold text-center">Basic</div>
-              <div class="w-full h-1 py-0 my-0 rounded-t gradient"></div>
-              <ul class="w-full text-base font-bold text-center">
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-              </ul>
-            </div>
-            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow ">
-              <div class="w-full pt-6 text-4xl font-bold text-center">
-                £x.99
-                <span class="text-base">/ per user</span>
-              </div>
-              <div class="flex items-center justify-center">
-                <button class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105">
-                  Sign Up
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-col w-5/6 mx-auto mt-4 bg-white rounded-none lg:w-1/4 lg:mx-0 lg:rounded-l-lg">
-            <div class="flex-1 overflow-hidden text-gray-600 bg-white rounded-t rounded-b-none shadow ">
-              <div class="p-8 text-3xl font-bold text-center border-b-4">
-                Pro
-              </div>
-              <ul class="w-full text-sm text-center">
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-              </ul>
-            </div>
-            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow ">
-              <div class="w-full pt-6 text-3xl font-bold text-center text-gray-600">
-                £x.99
-                <span class="text-base">/ per user</span>
-              </div>
-              <div class="flex items-center justify-center">
-                <button class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105">
-                  Sign Up
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
     <!-- Change the colour #f8fafc to match the previous section colour -->
     <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -374,18 +281,18 @@
     </svg>
     <section class="container py-6 mx-auto mb-12 text-center">
         <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white ">
-            Take a Step Forward
+            Join Hands With Us
         </h1>
         <div class="w-full mb-4">
             <div class="w-1/6 h-1 py-0 mx-auto my-0 bg-white rounded-t opacity-25"></div>
         </div>
         <h3 class="my-4 text-3xl leading-tight">
             <!-- Caring about your Happiness as -->
-            Happiness begins with good Health.
+            To Serve & Strengthen the Society.
         </h3>
         <button
             class="px-8 py-4 mx-auto my-6 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow-lg lg:mx-0 hover:underline focus:outline-none focus:shadow-outline hover:scale-105">
-            Contact Us!
+            <a href="tel:+91-74165-45740">Contact Us!</a>
         </button>
     </section>
     <!--Footer-->

@@ -23,7 +23,7 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('ummahs') }}" :active="request()->routeIs('ummahs')">
-                        {{ __('Ummahs') }}
+                        {{ __('Ulema') }}
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
