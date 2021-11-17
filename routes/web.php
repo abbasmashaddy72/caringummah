@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::post('doctor/update/{id}', [DoctorController::class, 'update'])->name('doctor.update');
     Route::post('doctor/destroy/{id}', [DoctorController::class, 'destroy'])->name('doctor.destroy');
 
+    Route::get('ummah/print/{id}', [UmmahController::class, 'print'])->name('ummah.print');
     Route::get('ummah/create', [UmmahController::class, 'create'])->name('ummah.create');
     Route::post('ummah/store', [UmmahController::class, 'store'])->name('ummah.store');
     Route::get('ummah/edit/{id}', [UmmahController::class, 'edit'])->name('ummah.edit');

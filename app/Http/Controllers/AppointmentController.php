@@ -35,7 +35,7 @@ class AppointmentController extends Controller
     {
         $request->validated();
         Appointment::create([
-            'description' => $request->description,
+            'symptoms' => $request->symptoms,
             'appointment_date' => $request->appointment_date,
             'doctor_id' => $request->doctor_id,
             'patient_id' => $request->patient_id,
@@ -81,7 +81,7 @@ class AppointmentController extends Controller
     {
         $request->validated();
         Appointment::findOrFail($id)->update([
-            'description' => $request->description,
+            'symptoms' => $request->symptoms,
             'appointment_date' => $request->appointment_date,
             'doctor_id' => $request->doctor_id,
             'patient_id' => $request->patient_id,

@@ -130,10 +130,8 @@ class AppointmentTable extends PowerGridComponent
 
             Button::add('destroy')
                 ->caption(__('Delete'))
-                ->class('bg-red-500 hover:bg-red-700 text-white text-center py-1 px-2 rounded')
-                ->route('appointment.destroy', ['id' => 'id'])
-                ->method('post')
-                ->target('')
+                ->class('bg-red-500 hover:bg-red-700 text-white cursor-pointer text-center py-1 px-2 rounded')
+                ->openModal('delete-appointment', ['del_id' => 'id'])
         ];
     }
 

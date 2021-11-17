@@ -41,7 +41,7 @@ class DoctorTable extends PowerGridComponent
     */
     public function datasource(): ?Builder
     {
-        return Doctor::query()->with('department');
+        return Doctor::query()->with('department', 'totalappointmentCount', 'monthlyappointmentCount');
     }
 
     /*
@@ -76,7 +76,13 @@ class DoctorTable extends PowerGridComponent
             ->addColumn('phone')
             ->addColumn('clinic_hospital_name')
             ->addColumn('clinic_hospital_address')
-            ->addColumn('monthly_slots');
+            ->addColumn('monthly_slots')
+            ->addColumn('total_patient_count', function (Doctor $model) {
+                return $model->totalappointmentCount->first()->aggregate ?? '0';
+            })
+            ->addColumn('monthly_patient_count', function (Doctor $model) {
+                return $model->monthlyappointmentCount->first()->aggregate ?? '0';
+            });
     }
 
     /*
@@ -126,6 +132,14 @@ class DoctorTable extends PowerGridComponent
             Column::add()
                 ->title(__('MONTHLY SLOTS'))
                 ->field('monthly_slots'),
+
+            Column::add()
+                ->title(__('TOTAL PATIENT COUNT'))
+                ->field('total_patient_count'),
+
+            Column::add()
+                ->title(__('MONTHLY PATIENT COUNT'))
+                ->field('monthly_patient_count'),
         ];
     }
 
@@ -148,9 +162,8 @@ class DoctorTable extends PowerGridComponent
 
             Button::add('destroy')
                 ->caption(__('Delete'))
-                ->class('bg-red-500 hover:bg-red-700 text-white text-center py-1 px-2 rounded')
-                ->route('doctor.destroy', ['id' => 'id'])
-                ->method('post')
+                ->class('bg-red-500 hover:bg-red-700 text-white cursor-pointer text-center py-1 px-2 rounded')
+                ->openModal('delete-doctor', ['del_id' => 'id'])
         ];
     }
 

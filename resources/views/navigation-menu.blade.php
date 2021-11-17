@@ -23,7 +23,7 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('ummahs') }}" :active="request()->routeIs('ummahs')">
-                        {{ __('Ulema') }}
+                        {{ __('Ummahs') }}
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -111,6 +111,27 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-jet-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('doctors') }}" :active="request()->routeIs('doctors')">
+                {{ __('Doctors') }}
+            </x-jet-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('ummahs') }}" :active="request()->routeIs('ummahs')">
+                {{ __('Ummahs') }}
+            </x-jet-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('patients') }}" :active="request()->routeIs('patients')">
+                {{ __('Patients') }}
+            </x-jet-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('appointments') }}"
+                :active="request()->routeIs('appointments')">
+                {{ __('Appointments') }}
             </x-jet-responsive-nav-link>
         </div>
 

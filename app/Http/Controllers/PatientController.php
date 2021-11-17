@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PatientRequest;
+use App\Models\Appointment;
+use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Ummah;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 
@@ -29,8 +32,9 @@ class PatientController extends Controller
     {
         $action = URL::route('patient.store');
         $ummah = Ummah::get();
+        $doctor = Doctor::get();
 
-        return view('forms/patient_ea', compact('action', 'ummah'));
+        return view('forms/patient_ea', compact('action', 'ummah', 'doctor'));
     }
 
     /**
@@ -41,16 +45,43 @@ class PatientController extends Controller
      */
     public function store(PatientRequest $request)
     {
-        $request->validated();
-        Patient::create([
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'relation' => $request->relation,
-            'location' => $request->location,
-            'ummah_id' => 1,
-        ]);
+        // dd($request->all());
+        $dob = new Carbon();
+        $date_of_birth = $dob->subYears($request->age)->format('Y-m-d');
+        if (!empty($request->appointment)) {
+            $request->validated();
+            $patient = Patient::create([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'relation' => $request->relation,
+                'location' => $request->location,
+                'ummah_id' => $request->ummah_id,
+                'date_of_birth' => $date_of_birth,
+                'gender' => $request->gender
+            ]);
+            Appointment::create([
+                'symptoms' => $request->symptoms,
+                'appointment_date' => $request->appointment_date,
+                'doctor_id' => $request->doctor_id,
+                'patient_id' => $patient->id,
+            ]);
 
-        return redirect()->route('patients')->with('message', 'Patient Added Successfully');
+            return redirect()->route('patients')->with('message', 'Appointment Added Successfully');
+        } else {
+            $request->validated();
+            Patient::create([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'relation' => $request->relation,
+                'location' => $request->location,
+                'ummah_id' => $request->ummah_id,
+                'date_of_birth' => $date_of_birth,
+                'gender' => $request->gender
+            ]);
+
+            return redirect()->route('patients')->with('message', 'Patient Added Successfully');
+        }
+        exit();
     }
 
     /**
@@ -75,8 +106,10 @@ class PatientController extends Controller
         $action = URL::route('patient.update', ['id' => $id]);
         $ummah = Ummah::get();
         $data = Patient::findOrFail($id);
+        $age = Carbon::parse($data->date_of_birth)->diff(Carbon::now())->format('%y');
+        $doctor = Doctor::get();
 
-        return view('forms/patient_ea', compact('action', 'data', 'ummah'));
+        return view('forms/patient_ea', compact('action', 'data', 'ummah', 'age', 'doctor'));
     }
 
     /**

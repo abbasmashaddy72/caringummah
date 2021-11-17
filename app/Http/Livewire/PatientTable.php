@@ -137,9 +137,8 @@ class PatientTable extends PowerGridComponent
 
             Button::add('destroy')
                 ->caption(__('Delete'))
-                ->class('bg-red-500 hover:bg-red-700 text-white text-center py-1 px-2 rounded')
-                ->route('patient.destroy', ['id' => 'id'])
-                ->method('post')
+                ->class('bg-red-500 hover:bg-red-700 text-white cursor-pointer text-center py-1 px-2 rounded')
+                ->openModal('delete-patient', ['del_id' => 'id'])
         ];
     }
 

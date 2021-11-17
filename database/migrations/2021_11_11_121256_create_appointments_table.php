@@ -17,7 +17,7 @@ class CreateAppointmentsTable extends Migration
             $table->id();
             $table->foreignId('doctor_id')->constrained('doctors')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('patient_id')->constrained('patients')->onUpdate('cascade')->onDelete('cascade');
-            $table->longText('description');
+            $table->longText('symptoms')->nullable();
             $table->date('appointment_date');
             $table->timestamps();
         });

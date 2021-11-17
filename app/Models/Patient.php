@@ -14,7 +14,9 @@ class Patient extends Model
         'phone',
         'location',
         'ummah_id',
-        'relation'
+        'relation',
+        'date_of_birth',
+        'gender'
     ];
 
     public function ummah()

@@ -197,7 +197,8 @@
                             Hidayyah for Ummah
                         </div>
                         <p class="px-6 mb-5 text-base text-gray-800">
-Learnings from the Quran , Hadith and Sunnah to guide us to straight path of success both in duniya and aaqirah
+                            Learnings from the Quran , Hadith and Sunnah to guide us to straight path of success both in
+                            duniya and aaqirah
                         </p>
                     </a>
                 </div>
@@ -217,7 +218,8 @@ Learnings from the Quran , Hadith and Sunnah to guide us to straight path of suc
                             Doctors for Ummah
                         </div>
                         <p class="px-6 mb-5 text-base text-gray-800">
-                            Free consultation for Ulema (Molvi/Imam/Hafeez/Aalim) muazzan, their family members and poor people from qualified specialist doctors
+                            Free consultation for Ummah (Molvi/Imam/Hafeez/Aalim) muazzan, their family members and poor
+                            people from qualified specialist doctors
                         </p>
                     </a>
                 </div>

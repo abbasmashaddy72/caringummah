@@ -23,7 +23,6 @@ class CreateUmmahsTable extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('phone')->unique();
-            $table->sting('photo')->nullable();
             $table->enum('connected_with', ['Masjid', 'Madarsa', 'School']);
             $table->string('qualification');
             $table->string('occupation');

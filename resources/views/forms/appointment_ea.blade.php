@@ -1,7 +1,10 @@
 <x-app-layout>
+    @section('title')
+        Add Appointment
+    @endsection
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('Appointment Add') }}
+            {{ __('Add Appointment') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -11,7 +14,7 @@
                     @csrf
                     <div class="mx-auto lg:w-1/2 md:w-2/3">
                         <div class="flex flex-wrap m-5">
-                            <div class="w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Relation</label>
                                     <select name="doctor_id"
@@ -23,7 +26,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Relation</label>
                                     <select name="patient_id"
@@ -37,15 +40,15 @@
                             </div>
 
 
-                            <div class="w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div class="relative">
-                                    <label for="name" class="text-sm leading-7 text-gray-600">Description</label>
-                                    <textarea id="message" name="description"
-                                        class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">{{ $data->description ?? '' }}</textarea>
+                                    <label for="name" class="text-sm leading-7 text-gray-600">Symptoms</label>
+                                    <textarea id="message" name="symptoms"
+                                        class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">{{ $data->symptoms ?? '' }}</textarea>
                                 </div>
                             </div>
 
-                            <div class="w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div
                                     class="relative w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-opacity-50 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                     <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>

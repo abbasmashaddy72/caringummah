@@ -1,7 +1,10 @@
 <x-app-layout>
+    @section('title')
+        Add Doctor
+    @endsection
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('Doctor Add') }}
+            {{ __('Add Doctor') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -11,16 +14,16 @@
                     @csrf
                     <div class="mx-auto lg:w-1/2 md:w-2/3">
                         <div class="flex flex-wrap m-5">
-                            <div class="w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Name</label>
                                     <input type="text" id="name" name="name" value="{{ $data->name ?? '' }}"
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                 </div>
                             </div>
-                            <div class="w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div class="relative">
-                                    <label for="name" class="text-sm leading-7 text-gray-600">Relation</label>
+                                    <label for="name" class="text-sm leading-7 text-gray-600">Department Name</label>
                                     <select name="department_id"
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                         @foreach ($dept_data as $item)
@@ -30,7 +33,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Qualification</label>
                                     <input type="text" id="name" name="qualification"
@@ -38,7 +41,7 @@
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                 </div>
                             </div>
-                            <div class="w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="number" class="text-sm leading-7 text-gray-600">Phone
                                         Number</label>
@@ -46,7 +49,7 @@
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                 </div>
                             </div>
-                            <div class="w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Clinic/Hospital
                                         Name</label>
@@ -55,10 +58,10 @@
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                 </div>
                             </div>
-                            <div class="w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="email" class="text-sm leading-7 text-gray-600">Monthly
-                                        SLots</label>
+                                        Slots</label>
                                     <input type="number" id="email" name="monthly_slots"
                                         value="{{ $data->monthly_slots ?? '' }}"
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
@@ -74,10 +77,10 @@
                                 </div>
                             </div>
 
-                        <br>
-                        <br>
+                            <br>
+                            <br>
 
-                            <div class="w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="email" class="text-sm leading-7 text-gray-600">Clinic/Hospital
                                         Address</label>
@@ -86,7 +89,7 @@
                                 </div>
                             </div>
 
-                            <div class="w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Extra
                                         Services</label>

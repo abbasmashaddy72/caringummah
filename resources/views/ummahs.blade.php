@@ -1,7 +1,10 @@
 <x-app-layout>
+    @section('title')
+        Ummahs
+    @endsection
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('Ulemas') }}
+            {{ __('Ummahs') }}
         </h2>
     </x-slot>
 

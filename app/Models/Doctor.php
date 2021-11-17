@@ -26,4 +26,26 @@ class Doctor extends Model
     {
         return $this->belongsTo(Department::class);
     }
+
+    public function appointment()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
+
+    public function totalappointmentCount()
+    {
+        return $this->appointment()
+            ->selectRaw('doctor_id, count(*) as aggregate')
+            ->groupBy('doctor_id');
+    }
+
+    public function monthlyappointmentCount()
+    {
+        return $this->appointment()
+            ->selectRaw('doctor_id, count(*) as aggregate')
+            ->whereMonth('appointment_date', date('m'))
+            ->whereYear('appointment_date', date('Y'))
+            ->groupBy('doctor_id');
+    }
 }

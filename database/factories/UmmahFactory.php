@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 
@@ -26,7 +27,10 @@ class UmmahFactory extends Factory
             'qualification' => $this->faker->educationalAttainment,
             'occupation' => $this->faker->team,
             'member_count' => rand(0, 10),
-            'family_members' => Arr::random($family_members, 2)
+            'family_members' => Arr::random($family_members, 2),
+            'connected_where' => $this->faker->university,
+            'date_of_birth' => $this->faker->dateTimeBetween('1990-01-01', Carbon::now())->format('Y-m-d'),
+            'location' => $this->faker->demonym,
         ];
     }
 }

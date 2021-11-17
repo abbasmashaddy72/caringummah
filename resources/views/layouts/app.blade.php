@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>
+        @if (request()->route()->getName() != 'index' &&
+    isset($__env->getSections()['title'])) @yield('title') - @endif
+        {{ config('app.name', 'Laravel') }}
+    </title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -21,6 +25,25 @@
 
         .bg-red-500 {
             background-color: #f56565;
+        }
+
+        .hover\:bg-green-700:hover {
+            background-color: #047857;
+        }
+
+        .bg-green-500 {
+            background-color: #10B981;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
         }
 
     </style>
@@ -65,10 +88,9 @@
         </div>
     </footer>
 
-    @stack('modals')
-
     @livewireScripts
     @powerGridScripts
+    @livewire('livewire-ui-modal')
     @stack('scripts')
 </body>
 
