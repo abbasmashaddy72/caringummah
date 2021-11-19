@@ -12,15 +12,20 @@ class Patient extends Model
     protected $fillable = [
         'name',
         'phone',
-        'location',
+        'locality_id',
         'ummah_id',
         'relation',
         'date_of_birth',
-        'gender'
+        'gender',
     ];
 
     public function ummah()
     {
         return $this->belongsTo(Ummah::class);
+    }
+
+    public function locality()
+    {
+        return $this->belongsTo(Locality::class);
     }
 }

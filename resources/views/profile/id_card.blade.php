@@ -6,11 +6,6 @@
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
-        * {
-            --dark: #393939;
-            --red: #67B751;
-        }
-
         body {
             margin: 0;
             font-family: Roboto, Arial, Helvetica, sans-serif;
@@ -36,8 +31,23 @@
 
         .business2 .red {
             height: 20%;
-            background-color: var(--red);
+            background-color: #67B751;
             position: relative;
+        }
+
+        .business2 .bottom {
+            height: 6%;
+            background-color: #2D3376;
+            position: absolute;
+            bottom: 0;
+            width: 100%
+        }
+
+        .business2 .footer {
+            display: flex;
+            justify-content: center;
+            background-color: #67B751;
+            padding: 2px;
         }
 
         .business2 .head {
@@ -73,7 +83,7 @@
             padding: 10px;
             box-sizing: border-box;
             border-radius: 50%;
-            border: 6px solid var(--red);
+            border: 6px solid #67B751;
             height: 100%;
             display: flex;
             align-items: center;
@@ -112,6 +122,14 @@
             position: absolute;
             bottom: 3px;
             right: 5px;
+        }
+
+        .fbottomright {
+            position: absolute;
+            bottom: -20%;
+            right: 5px;
+            font-size: 11px;
+            color: #fff;
         }
 
     </style>
@@ -4063,6 +4081,13 @@ AACAiQDPBDn1Ep0deAAAAABJRU5ErkJggg==" transform="matrix(0.3282 0 0 0.3282 -194.8
                         <p>&nbsp;:&nbsp;{{ $ummah->connected_where }}</p>
                         <p>&nbsp;:&nbsp;{{ $ummah->qualification }}</p>
                         <p>&nbsp;:&nbsp;{{ $ummah->member_count }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="footer">
+                    <div>
+                        <p class="fbottomright">Contact No.: +91-741-654-5740</p>
                     </div>
                 </div>
             </div>

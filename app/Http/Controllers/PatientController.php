@@ -6,6 +6,7 @@ use App\Http\Requests\PatientRequest;
 use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\State;
 use App\Models\Ummah;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -33,8 +34,9 @@ class PatientController extends Controller
         $action = URL::route('patient.store');
         $ummah = Ummah::get();
         $doctor = Doctor::get();
+        $states = State::get(["name", "id"]);
 
-        return view('forms/patient_ea', compact('action', 'ummah', 'doctor'));
+        return view('forms/patient_ea', compact('action', 'ummah', 'doctor', 'states'));
     }
 
     /**
@@ -54,7 +56,7 @@ class PatientController extends Controller
                 'name' => $request->name,
                 'phone' => $request->phone,
                 'relation' => $request->relation,
-                'location' => $request->location,
+                'locality_id' => $request->locality_id,
                 'ummah_id' => $request->ummah_id,
                 'date_of_birth' => $date_of_birth,
                 'gender' => $request->gender
@@ -66,20 +68,20 @@ class PatientController extends Controller
                 'patient_id' => $patient->id,
             ]);
 
-            return redirect()->route('patients')->with('message', 'Appointment Added Successfully');
+            return redirect()->route('patients')->with('message', 'Appointment Added Successfully')->withInput();
         } else {
             $request->validated();
             Patient::create([
                 'name' => $request->name,
                 'phone' => $request->phone,
                 'relation' => $request->relation,
-                'location' => $request->location,
+                'locality_id' => $request->locality_id,
                 'ummah_id' => $request->ummah_id,
                 'date_of_birth' => $date_of_birth,
                 'gender' => $request->gender
             ]);
 
-            return redirect()->route('patients')->with('message', 'Patient Added Successfully');
+            return redirect()->route('patients')->with('message', 'Patient Added Successfully')->withInput();
         }
         exit();
     }
@@ -126,7 +128,7 @@ class PatientController extends Controller
             'name' => $request->name,
             'phone' => $request->phone,
             'relation' => $request->relation,
-            'location' => $request->location,
+            'locality_id' => $request->locality_id,
             'ummah_id' => $request->ummah_id,
         ]);
 

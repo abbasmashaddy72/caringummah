@@ -3,10 +3,18 @@
 namespace Database\Factories;
 
 use App\Models\Department;
+use App\Models\Doctor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DoctorFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Doctor::class;
+
     /**
      * Define the model's default state.
      *
@@ -21,6 +29,7 @@ class DoctorFactory extends Factory
             'department_id' => Department::pluck('id')[$this->faker->numberBetween(1, Department::count() - 1)],
             'qualification' => $this->faker->educationalAttainment,
             'phone' => rand(7000000000, 9999999999),
+            'locality_id' => rand(70, 9999),
             'clinic_hospital_name' => $this->faker->name(),
             'clinic_hospital_address' => $this->faker->address(),
             'clinic_hospital_phone' => rand(7000000000, 9999999999),

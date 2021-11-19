@@ -25,7 +25,7 @@ class PatientRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255', 'min:3'],
-            'location' => ['required', 'max:255', 'min:3'],
+            'locality_id' => ['required', 'integer'],
             'phone' => ['required', 'string'],
             'relation' => ['required', 'min:1'],
         ];

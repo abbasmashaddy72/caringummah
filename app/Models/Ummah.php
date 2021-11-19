@@ -18,7 +18,7 @@ class Ummah extends Model
         'connected_where',
         'qualification',
         'occupation',
-        'location',
+        'locality_id',
         'member_count',
         'family_members',
         'attachments',
@@ -26,6 +26,6 @@ class Ummah extends Model
 
     protected $casts = [
         'family_members' => 'array',
-        'attachments' => 'array'
+        'attachments' => 'array',
     ];
 }

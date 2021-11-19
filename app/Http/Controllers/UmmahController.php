@@ -70,7 +70,7 @@ class UmmahController extends Controller
             'connected_where' => $request->connected_where,
             'qualification' => $request->qualification,
             'occupation' => $request->occupation,
-            'location' => $request->location,
+            'locality_id' => $request->locality_id,
             'member_count' => $request->member_count,
             'family_members' => $request->family_members,
             'attachments' => $newImageName,

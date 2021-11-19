@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Ummah;
 use Illuminate\Database\Seeder;
 
 class UmmahSeeder extends Seeder
@@ -13,6 +14,6 @@ class UmmahSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Ummah::factory()->count(rand(200, 500))->create();
     }
 }

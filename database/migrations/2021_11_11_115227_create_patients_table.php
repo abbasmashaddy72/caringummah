@@ -17,7 +17,6 @@ class CreatePatientsTable extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('phone');
-            $table->string('location');
             $table->foreignId('ummah_id')->constrained('ummahs')->onUpdate('cascade')->onDelete('cascade');
             $table->enum('relation', ["father", "mother", "son", "daughter", "husband", "wife", "brother", "sister", "grandfather", "grandmother", "grandson", "granddaughter", "uncle", "aunt", "nephew", "niece", "cousin",]);
             $table->timestamps();

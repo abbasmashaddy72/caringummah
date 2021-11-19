@@ -17,7 +17,6 @@ class AddColoumsToUmmahsTable extends Migration
             $table->string('photo')->nullable()->after('family_members');
             $table->string('connected_where')->after('connected_with');
             $table->date('date_of_birth')->after('name')->nullable();
-            $table->string('location')->after('occupation');
         });
     }
 
@@ -31,7 +30,6 @@ class AddColoumsToUmmahsTable extends Migration
         Schema::table('ummahs', function (Blueprint $table) {
             $table->dropColumn('connected_where');
             $table->dropColumn('date_of_birth');
-            $table->dropColumn('location');
             $table->dropColumn('photo');
         });
     }

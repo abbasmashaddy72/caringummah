@@ -13,7 +13,7 @@ class Appointment extends Model
         'doctor_id',
         'patient_id',
         'symptoms',
-        'appointment_date'
+        'appointment_date',
     ];
 
     public function doctor()

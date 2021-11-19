@@ -14,12 +14,13 @@ class Doctor extends Model
         'department_id',
         'qualification',
         'phone',
+        'locality_id',
         'clinic_hospital_name',
         'clinic_hospital_address',
         'clinic_hospital_phone',
         'monthly_slots',
         'extra_services',
-        'suggestions'
+        'suggestions',
     ];
 
     public function department()
@@ -31,7 +32,6 @@ class Doctor extends Model
     {
         return $this->hasMany(Appointment::class);
     }
-
 
     public function totalappointmentCount()
     {

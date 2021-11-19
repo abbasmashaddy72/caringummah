@@ -18,6 +18,7 @@
 
     @livewireStyles
     @powerGridStyles
+    @stack('styles')
     <style>
         .hover\:bg-red-700:hover {
             background-color: #c53030;

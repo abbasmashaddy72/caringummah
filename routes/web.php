@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\CityLocalityController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
@@ -65,4 +66,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('appointment/edit/{id}', [AppointmentController::class, 'edit'])->name('appointment.edit');
     Route::post('appointment/update/{id}', [AppointmentController::class, 'update'])->name('appointment.update');
     Route::post('appointment/destroy/{id}', [AppointmentController::class, 'destroy'])->name('appointment.destroy');
+
+    Route::post('get-cities-by-state', [CityLocalityController::class, 'getCity']);
+    Route::post('get-localities-by-cities', [CityLocalityController::class, 'getLocality']);
 });

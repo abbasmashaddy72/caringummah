@@ -71,7 +71,9 @@ class PatientTable extends PowerGridComponent
             ->addColumn('id')
             ->addColumn('name')
             ->addColumn('phone')
-            ->addColumn('location')
+            ->addColumn('locality', function (Patient $model) {
+                return $model->locality->name;
+            })
             ->addColumn('ummah_name', function (Patient $model) {
                 return $model->ummah->name;
             })
@@ -103,8 +105,8 @@ class PatientTable extends PowerGridComponent
                 ->field('phone'),
 
             Column::add()
-                ->title(__('LOCATION'))
-                ->field('location')
+                ->title(__('LOCALITY'))
+                ->field('locality')
                 ->sortable(),
 
             Column::add()
