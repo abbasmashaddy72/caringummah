@@ -6,10 +6,8 @@ use App\Http\Requests\PatientRequest;
 use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Patient;
-use App\Models\State;
 use App\Models\Ummah;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 
 class PatientController extends Controller
@@ -21,7 +19,6 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -34,15 +31,15 @@ class PatientController extends Controller
         $action = URL::route('patient.store');
         $ummah = Ummah::get();
         $doctor = Doctor::get();
-        $states = State::get(["name", "id"]);
 
-        return view('forms/patient_ea', compact('action', 'ummah', 'doctor', 'states'));
+        return view('forms/patient_ea', compact('action', 'ummah', 'doctor'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(PatientRequest $request)
@@ -59,7 +56,7 @@ class PatientController extends Controller
                 'locality_id' => $request->locality_id,
                 'ummah_id' => $request->ummah_id,
                 'date_of_birth' => $date_of_birth,
-                'gender' => $request->gender
+                'gender' => $request->gender,
             ]);
             Appointment::create([
                 'symptoms' => $request->symptoms,
@@ -78,7 +75,7 @@ class PatientController extends Controller
                 'locality_id' => $request->locality_id,
                 'ummah_id' => $request->ummah_id,
                 'date_of_birth' => $date_of_birth,
-                'gender' => $request->gender
+                'gender' => $request->gender,
             ]);
 
             return redirect()->route('patients')->with('message', 'Patient Added Successfully')->withInput();
@@ -89,18 +86,15 @@ class PatientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
     public function show(Patient $patient)
     {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
     public function edit(Patient $patient, $id)
@@ -117,8 +111,8 @@ class PatientController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Patient  $patient
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(PatientRequest $request, Patient $patient, $id)
@@ -138,7 +132,6 @@ class PatientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
     public function destroy(Patient $patient, $id)

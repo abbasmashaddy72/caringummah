@@ -48,4 +48,9 @@ class Doctor extends Model
             ->whereYear('appointment_date', date('Y'))
             ->groupBy('doctor_id');
     }
+
+    public function locality()
+    {
+        return $this->belongsTo(Locality::class);
+    }
 }

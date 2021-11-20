@@ -7,42 +7,64 @@ use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Ummah;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
+use Asantibanez\LivewireCharts\Models\LineChartModel;
+use Asantibanez\LivewireCharts\Models\PieChartModel;
+use Colors\RandomColor;
 use Illuminate\Http\Request;
 
 class Dashboard extends Controller
 {
     public $firstRun = true;
+    public $showDataLabels = true;
 
     public function index()
     {
-        $data1 = Appointment::with('doctor')->get();
+        $patient_locality = Patient::with('locality')->get();
 
-        $columnChartModel1 = $data1->groupBy('doctor_id')->reduce(
-            function (ColumnChartModel $columnChartModel, $data1) {
-                $doctors = $data1->first()->doctor->name;
-                $count = $data1->count('id');
-                return $columnChartModel->addColumn($doctors, $count, '#09009B');
+        $pieChartModel1 = $patient_locality->groupBy('locality_id')->reduce(
+            function ($pieChartModel1, $patient_locality) {
+                $patients = $patient_locality->first()->locality->name;
+                $count = $patient_locality->count('id');
+                $color = RandomColor::one(['luminosity' => 'dark', 'format' => 'hex']);
+                return $pieChartModel1->addSlice($patients, $count, $color);
             },
-            (new ColumnChartModel())
-                ->setTitle('Patients Count Doctor Wise')
+            (new PieChartModel())
                 ->setAnimated($this->firstRun)
-                ->setLegendVisibility(false)
-                ->withGrid()
+                ->setLegendVisibility(true)
+                ->legendPositionLeft()
+                ->setDataLabelsEnabled($this->showDataLabels)
+                ->setOpacity(0.85)
         );
 
-        $data2 = Patient::with('ummah')->get();
+        $doctor_locality = Doctor::with('locality')->get();
 
-        $columnChartModel2 = $data2->groupBy('ummah_id')->reduce(
-            function (ColumnChartModel $columnChartModel, $data2) {
-                $ummahs = $data2->first()->ummah->name;
-                $count = $data2->count('id');
-                return $columnChartModel->addColumn($ummahs, $count, '#056608');
+        $pieChartModel2 = $doctor_locality->groupBy('locality_id')->reduce(
+            function ($pieChartModel2, $doctor_locality) {
+                $patients = $doctor_locality->first()->locality->name;
+                $count = $doctor_locality->count('id');
+                $color = RandomColor::one(['luminosity' => 'dark', 'format' => 'hex']);
+                return $pieChartModel2->addSlice($patients, $count, $color);
             },
-            (new ColumnChartModel())
-                ->setTitle('Patients Count Ummah Wise')
+            (new PieChartModel())
                 ->setAnimated($this->firstRun)
-                ->setLegendVisibility(false)
-                ->withGrid()
+                ->setLegendVisibility(true)
+                ->legendPositionLeft()
+                ->setDataLabelsEnabled($this->showDataLabels)
+                ->setOpacity(0.85)
+        );
+
+        $appointment_dated = Appointment::orderBy('appointment_date', 'ASC')->get();
+
+        $lineChartModel = $appointment_dated->reduce(
+            function ($lineChartModel, $data) use ($appointment_dated) {
+                $index = $appointment_dated->search($data);
+                $appointment_count = $appointment_dated->take($index)->groupBy('appointment_date')->count('id');
+
+                return $lineChartModel->addPoint($data->appointment_date, $appointment_count, ['id' => $data->id]);
+            },
+            (new LineChartModel())
+                ->setAnimated($this->firstRun)
+                ->setSmoothCurve()
         );
 
         $doctor_count = Doctor::count();
@@ -50,6 +72,6 @@ class Dashboard extends Controller
         $patient_count = Patient::count();
         $appointment_count = Appointment::count();
 
-        return view('dashboard', compact(['doctor_count', 'ummah_count', 'patient_count', 'appointment_count', 'columnChartModel1', 'columnChartModel2']));
+        return view('dashboard', compact(['doctor_count', 'ummah_count', 'patient_count', 'appointment_count', 'pieChartModel1', 'pieChartModel2', 'lineChartModel']));
     }
 }

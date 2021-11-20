@@ -28,4 +28,9 @@ class Ummah extends Model
         'family_members' => 'array',
         'attachments' => 'array',
     ];
+
+    public function locality()
+    {
+        return $this->belongsTo(Locality::class);
+    }
 }

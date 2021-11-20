@@ -3,8 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Patient;
-use App\Models\Ummah;
-use Illuminate\Support\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Button;
@@ -42,7 +40,7 @@ class PatientTable extends PowerGridComponent
     */
     public function datasource(): ?Builder
     {
-        return Patient::query()->with('ummah');
+        return Patient::query()->with('ummah', 'locality');
     }
 
     /*
@@ -128,7 +126,6 @@ class PatientTable extends PowerGridComponent
     |
     */
 
-
     public function actions(): array
     {
         return [
@@ -140,10 +137,9 @@ class PatientTable extends PowerGridComponent
             Button::add('destroy')
                 ->caption(__('Delete'))
                 ->class('bg-red-500 hover:bg-red-700 text-white cursor-pointer text-center py-1 px-2 rounded')
-                ->openModal('delete-patient', ['del_id' => 'id'])
+                ->openModal('delete-patient', ['del_id' => 'id']),
         ];
     }
-
 
     /*
     |--------------------------------------------------------------------------

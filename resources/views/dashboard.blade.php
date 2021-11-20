@@ -46,30 +46,53 @@
                     </div>
                 </section>
                 <section class="text-gray-600 body-font">
+                    <div class="container px-5 py-24 mx-auto">
+                        <div class="flex flex-wrap -m-4">
+                            <div class="w-full p-4 md:w-1/2">
+                                <div class="container p-4 mx-auto mt-8 space-y-4 sm:p-0">
+                                    <div class="flex">
+                                        <div class="m-auto">
+                                            <h3 class="text-xl font-semibold leading-tight text-gray-800">Patients Count
+                                                Locality Wise</h3>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                                        <div class="flex-1 p-4 bg-white border rounded shadow" style="height: 32rem;">
+                                            <livewire:livewire-pie-chart :pie-chart-model="$pieChartModel1" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full p-4 md:w-1/2">
+                                <div class="container p-4 mx-auto mt-8 space-y-4 sm:p-0">
+                                    <div class="flex">
+                                        <div class="m-auto">
+                                            <h3 class="text-xl font-semibold leading-tight text-gray-800">Doctor Count
+                                                Locality Wise</h3>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                                        <div class="flex-1 p-4 bg-white border rounded shadow" style="height: 32rem;">
+                                            <livewire:livewire-pie-chart :pie-chart-model="$pieChartModel2" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="text-gray-600 body-font">
                     <div class="container px-5 py-8 mx-auto">
                         <div class="container p-4 mx-auto mt-8 space-y-4 sm:p-0">
                             <div class="flex">
                                 <div class="m-auto">
-                                    <h3 class="text-xl font-semibold leading-tight text-gray-800">Patients Count Doctor
-                                        Wise</h3>
+                                    <h3 class="text-xl font-semibold leading-tight text-gray-800">Appointment Count
+                                        Monthly Wise</h3>
                                 </div>
                             </div>
                             <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
                                 <div class="flex-1 p-4 bg-white border rounded shadow" style="height: 32rem;">
-                                    <livewire:livewire-column-chart :column-chart-model="$columnChartModel1" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container p-4 mx-auto mt-8 space-y-4 sm:p-0">
-                            <div class="flex">
-                                <div class="m-auto">
-                                    <h3 class="text-xl font-semibold leading-tight text-gray-800">Patients Count Ummah
-                                        Wise</h3>
-                                </div>
-                            </div>
-                            <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-                                <div class="flex-1 p-4 bg-white border rounded shadow" style="height: 32rem;">
-                                    <livewire:livewire-column-chart :column-chart-model="$columnChartModel2" />
+                                    <livewire:livewire-line-chart :line-chart-model="$lineChartModel" />
                                 </div>
                             </div>
                         </div>

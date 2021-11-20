@@ -41,7 +41,7 @@ class DoctorTable extends PowerGridComponent
     */
     public function datasource(): ?Builder
     {
-        return Doctor::query()->with('department', 'totalappointmentCount', 'monthlyappointmentCount');
+        return Doctor::query()->with('department', 'totalappointmentCount', 'monthlyappointmentCount', 'locality');
     }
 
     /*
@@ -73,6 +73,9 @@ class DoctorTable extends PowerGridComponent
                 return $model->department->title;
             })
             ->addColumn('qualification')
+            ->addColumn('locality', function (Doctor $model) {
+                return $model->locality->name;
+            })
             ->addColumn('phone')
             ->addColumn('clinic_hospital_name')
             ->addColumn('clinic_hospital_address')
@@ -108,6 +111,10 @@ class DoctorTable extends PowerGridComponent
             Column::add()
                 ->title(__('DEPARTMENT'))
                 ->field('department_name'),
+
+            Column::add()
+                ->title(__('LOCALITY'))
+                ->field('locality'),
 
             Column::add()
                 ->title(__('QUALIFICATION'))

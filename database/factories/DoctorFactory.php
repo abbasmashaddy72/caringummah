@@ -29,7 +29,7 @@ class DoctorFactory extends Factory
             'department_id' => Department::pluck('id')[$this->faker->numberBetween(1, Department::count() - 1)],
             'qualification' => $this->faker->educationalAttainment,
             'phone' => rand(7000000000, 9999999999),
-            'locality_id' => rand(70, 9999),
+            'locality_id' => rand(98, 110),
             'clinic_hospital_name' => $this->faker->name(),
             'clinic_hospital_address' => $this->faker->address(),
             'clinic_hospital_phone' => rand(7000000000, 9999999999),

@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Ummah;
-use Illuminate\Support\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Button;
@@ -41,7 +40,7 @@ class UmmahTable extends PowerGridComponent
     */
     public function datasource(): ?Builder
     {
-        return Ummah::query();
+        return Ummah::query()->with('locality');
     }
 
     /*
@@ -73,6 +72,10 @@ class UmmahTable extends PowerGridComponent
             ->addColumn('connected_with')
             ->addColumn('qualification')
             ->addColumn('occupation')
+            ->addColumn('connected_where')
+            ->addColumn('locality', function (Ummah $model) {
+                return $model->locality->name;
+            })
             ->addColumn('member_count');
     }
 
@@ -102,8 +105,17 @@ class UmmahTable extends PowerGridComponent
                 ->field('phone'),
 
             Column::add()
+                ->title(__('LOCALITY'))
+                ->field('locality'),
+
+            Column::add()
                 ->title(__('CONNECTED WITH'))
                 ->field('connected_with')
+                ->sortable(),
+
+            Column::add()
+                ->title(__('CONNECTED WHERE'))
+                ->field('connected_where')
                 ->sortable(),
 
             Column::add()
@@ -131,7 +143,6 @@ class UmmahTable extends PowerGridComponent
     |
     */
 
-
     public function actions(): array
     {
         return [
@@ -148,10 +159,9 @@ class UmmahTable extends PowerGridComponent
             Button::add('destroy')
                 ->caption(__('Delete'))
                 ->class('bg-red-500 hover:bg-red-700 text-white cursor-pointer text-center py-1 px-2 rounded')
-                ->openModal('delete-ummah', ['del_id' => 'id'])
+                ->openModal('delete-ummah', ['del_id' => 'id']),
         ];
     }
-
 
     /*
     |--------------------------------------------------------------------------

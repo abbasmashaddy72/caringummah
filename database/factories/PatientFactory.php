@@ -31,7 +31,7 @@ class PatientFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'phone' => rand(7000000000, 9999999999),
-            'locality_id' => rand(70, 9999),
+            'locality_id' => rand(90, 100),
             'ummah_id' => Ummah::pluck('id')[$this->faker->numberBetween(1, Ummah::count() - 1)],
             'relation' => $family_members[array_rand($family_members)],
             'date_of_birth' => $this->faker->dateTimeBetween('1990-01-01', Carbon::now())->format('Y-m-d'),
