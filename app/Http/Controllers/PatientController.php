@@ -44,7 +44,6 @@ class PatientController extends Controller
      */
     public function store(PatientRequest $request)
     {
-        // dd($request->all());
         $dob = new Carbon();
         $date_of_birth = $dob->subYears($request->age)->format('Y-m-d');
         if (!empty($request->appointment)) {

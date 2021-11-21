@@ -93,7 +93,6 @@ class DoctorController extends Controller
     public function update(DoctorRequest $request, $id)
     {
         $request->validated();
-        // dd($request->all());
         Doctor::findOrFail($id)->update([
             'name' => $request->name,
             'qualification' => $request->qualification,

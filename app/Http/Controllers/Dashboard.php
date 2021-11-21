@@ -11,6 +11,7 @@ use Asantibanez\LivewireCharts\Models\LineChartModel;
 use Asantibanez\LivewireCharts\Models\PieChartModel;
 use Colors\RandomColor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Dashboard extends Controller
 {
@@ -53,14 +54,12 @@ class Dashboard extends Controller
                 ->setOpacity(0.85)
         );
 
-        $appointment_dated = Appointment::orderBy('appointment_date', 'ASC')->get();
+        $appointment_dated = Appointment::select(DB::raw('count(*) as total'), DB::raw("(DATE_FORMAT(appointment_date, '%M %Y')) as month_year"))->orderBy('appointment_date')->groupBy(DB::raw("DATE_FORMAT(appointment_date, '%M %Y')"))->get();
 
         $lineChartModel = $appointment_dated->reduce(
-            function ($lineChartModel, $data) use ($appointment_dated) {
-                $index = $appointment_dated->search($data);
-                $appointment_count = $appointment_dated->take($index)->groupBy('appointment_date')->count('id');
+            function ($lineChartModel, $appointment_dated) {
 
-                return $lineChartModel->addPoint($data->appointment_date, $appointment_count, ['id' => $data->id]);
+                return $lineChartModel->addPoint($appointment_dated->month_year, $appointment_dated->total, ['id' => $appointment_dated->id]);
             },
             (new LineChartModel())
                 ->setAnimated($this->firstRun)

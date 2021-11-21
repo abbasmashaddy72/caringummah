@@ -41,7 +41,6 @@ class UmmahController extends Controller
      */
     public function store(UmmahRequest $request)
     {
-        dd($request->all());
         $request->validated();
         if (!empty($request->attachments)) {
             $newImageName = Str::random(20) . '.' . $request->attachments->extension();
@@ -58,8 +57,6 @@ class UmmahController extends Controller
 
         $dob = new Carbon();
         $date_of_birth = $dob->subYears($request->age)->format('Y-m-d');
-
-        // dd($request->all());
 
         Ummah::create([
             'name' => $request->name,
@@ -100,8 +97,6 @@ class UmmahController extends Controller
         $data = $ummah->findOrFail($id);
         $action = URL::route('ummah.update', ['id' => $id]);
         $age = Carbon::parse($data->date_of_birth)->diff(Carbon::now())->format('%y');
-        // echo $data;
-        // exit();
 
         return view('forms/ummah_ea', compact('data', 'action', 'age'));
     }
@@ -154,7 +149,6 @@ class UmmahController extends Controller
     {
         $ummah = Ummah::findOrFail($id);
         $age = Carbon::parse($ummah->date_of_birth)->diff(Carbon::now())->format('%y years');
-        // dd($age);
 
         return view('profile.id_card', compact('ummah', 'age'));
     }
