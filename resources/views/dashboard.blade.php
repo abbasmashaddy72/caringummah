@@ -42,6 +42,20 @@
                                     <p class="font-bold leading-relaxed text-gray-100">Appointments</p>
                                 </div>
                             </div>
+                            <div class="w-1/2 p-4 sm:w-1/4">
+                                <div class="p-2 bg-indigo-500 rounded-lg xl:p-6">
+                                    <h2 class="text-3xl font-medium text-white title-font sm:text-4xl">
+                                        {{ $connection_count }}</h2>
+                                    <p class="font-bold leading-relaxed text-gray-100">Connections</p>
+                                </div>
+                            </div>
+                            <div class="w-1/2 p-4 sm:w-1/4">
+                                <div class="p-2 bg-indigo-500 rounded-lg xl:p-6">
+                                    <h2 class="text-3xl font-medium text-white title-font sm:text-4xl">
+                                        {{ $response_count }}</h2>
+                                    <p class="font-bold leading-relaxed text-gray-100">Response</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

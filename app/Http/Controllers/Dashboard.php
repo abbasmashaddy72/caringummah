@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Connection;
 use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\Response;
 use App\Models\Ummah;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Asantibanez\LivewireCharts\Models\LineChartModel;
@@ -70,7 +72,9 @@ class Dashboard extends Controller
         $ummah_count = Ummah::count();
         $patient_count = Patient::count();
         $appointment_count = Appointment::count();
+        $connection_count = Connection::count();
+        $response_count = Response::count();
 
-        return view('dashboard', compact(['doctor_count', 'ummah_count', 'patient_count', 'appointment_count', 'pieChartModel1', 'pieChartModel2', 'lineChartModel']));
+        return view('dashboard', compact(['doctor_count', 'ummah_count', 'patient_count', 'appointment_count', 'pieChartModel1', 'pieChartModel2', 'lineChartModel', 'response_count', 'connection_count']));
     }
 }

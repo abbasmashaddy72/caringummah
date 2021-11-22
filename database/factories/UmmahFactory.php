@@ -23,20 +23,16 @@ class UmmahFactory extends Factory
      */
     public function definition()
     {
-        $this->faker->addProvider(new \Bezhanov\Faker\ProviderCollectionHelper($this->faker));
-
-        $connected_with = ['Masjid', 'Madarsa', 'School'];
         $family_members = ['father', 'mother', 'son', 'daughter', 'husband', 'wife', 'brother', 'sister', 'grandfather', 'grandmother', 'grandson', 'granddaughter', 'uncle', 'aunt', 'nephew', 'niece', 'cousin'];
 
         return [
             'name' => $this->faker->name(),
             'phone' => rand(7000000000, 9999999999),
-            'connected_with' => $connected_with[array_rand($connected_with)],
+            'connection_id' => rand(10, 50),
             'qualification' => $this->faker->educationalAttainment,
             'occupation' => $this->faker->team,
             'member_count' => rand(0, 10),
             'family_members' => Arr::random($family_members, 2),
-            'connected_where' => $this->faker->university,
             'date_of_birth' => $this->faker->dateTimeBetween('1990-01-01', Carbon::now())->format('Y-m-d'),
             'locality_id' => rand(70, 9999),
         ];

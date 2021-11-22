@@ -7,13 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable as AuditingAuditable;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class City extends Model implements Auditable
+class Connection extends Model implements Auditable
 {
     use AuditingAuditable;
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'state_id',
+        'type',
+        'locality_id',
     ];
+
+    public function locality()
+    {
+        return $this->belongsTo(Locality::class);
+    }
 }

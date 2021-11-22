@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\CityLocalityController;
+use App\Http\Controllers\ConnectionController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
@@ -30,6 +31,10 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         return view('doctors');
     })->name('doctors');
 
+    Route::get('/connections', function () {
+        return view('connections');
+    })->name('connections');
+
     Route::get('/ummahs', function () {
         return view('ummahs');
     })->name('ummahs');
@@ -42,11 +47,21 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         return view('appointments');
     })->name('appointments');
 
+    Route::get('/responses', function () {
+        return view('responses');
+    })->name('responses');
+
     Route::get('doctor/create', [DoctorController::class, 'create'])->name('doctor.create');
     Route::post('doctor/store', [DoctorController::class, 'store'])->name('doctor.store');
     Route::get('doctor/edit/{id}', [DoctorController::class, 'edit'])->name('doctor.edit');
     Route::post('doctor/update/{id}', [DoctorController::class, 'update'])->name('doctor.update');
     Route::post('doctor/destroy/{id}', [DoctorController::class, 'destroy'])->name('doctor.destroy');
+
+    Route::get('connection/create', [ConnectionController::class, 'create'])->name('connection.create');
+    Route::post('connection/store', [ConnectionController::class, 'store'])->name('connection.store');
+    Route::get('connection/edit/{id}', [ConnectionController::class, 'edit'])->name('connection.edit');
+    Route::post('connection/update/{id}', [ConnectionController::class, 'update'])->name('connection.update');
+    Route::post('connection/destroy/{id}', [ConnectionController::class, 'destroy'])->name('connection.destroy');
 
     Route::get('ummah/print/{id}', [UmmahController::class, 'print'])->name('ummah.print');
     Route::get('ummah/create', [UmmahController::class, 'create'])->name('ummah.create');

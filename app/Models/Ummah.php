@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable as AuditingAuditable;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Ummah extends Model
+class Ummah extends Model implements Auditable
 {
+    use AuditingAuditable;
     use HasFactory;
 
     protected $fillable = [
@@ -14,8 +17,7 @@ class Ummah extends Model
         'date_of_birth',
         'phone',
         'photo',
-        'connected_with',
-        'connected_where',
+        'connection_id',
         'qualification',
         'occupation',
         'locality_id',

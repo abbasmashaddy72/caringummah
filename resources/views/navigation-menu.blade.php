@@ -22,6 +22,11 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('connections') }}" :active="request()->routeIs('connections')">
+                        {{ __('Connections') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('ummahs') }}" :active="request()->routeIs('ummahs')">
                         {{ __('Ummahs') }}
                     </x-jet-nav-link>
@@ -34,6 +39,11 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('appointments') }}" :active="request()->routeIs('appointments')">
                         {{ __('Appointments') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('responses') }}" :active="request()->routeIs('responses')">
+                        {{ __('Responses') }}
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -119,6 +129,11 @@
             </x-jet-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('connections') }}" :active="request()->routeIs('connections')">
+                {{ __('Connections') }}
+            </x-jet-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('ummahs') }}" :active="request()->routeIs('ummahs')">
                 {{ __('Ummahs') }}
             </x-jet-responsive-nav-link>
@@ -132,6 +147,11 @@
             <x-jet-responsive-nav-link href="{{ route('appointments') }}"
                 :active="request()->routeIs('appointments')">
                 {{ __('Appointments') }}
+            </x-jet-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('responses') }}" :active="request()->routeIs('responses')">
+                {{ __('Responses') }}
             </x-jet-responsive-nav-link>
         </div>
 
