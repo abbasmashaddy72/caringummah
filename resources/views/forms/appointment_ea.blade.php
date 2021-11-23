@@ -2,6 +2,23 @@
     @section('title')
         Add Appointment
     @endsection
+    @push('styles')
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+        <style>
+            .select2-selection__rendered {
+                line-height: 35px !important;
+            }
+
+            .select2-container .select2-selection--single {
+                height: 40px !important;
+            }
+
+            .select2-selection__arrow {
+                height: 40px !important;
+            }
+
+        </style>
+    @endpush
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
             {{ __('Add Appointment') }}
@@ -17,11 +34,11 @@
                             <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Doctor</label>
-                                    <select name="doctor_id"
+                                    <select name="doctor_id" id="doctor_id"
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                         @foreach ($doctor as $item)
                                             <option value="{{ $item->id }}" @if (!empty($data->doctor_id) && $data->doctor_id == $item->id) selected @endif>
-                                                {{ $item->name }}</option>
+                                                {{ $item->name }}, {{ $item->department->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -29,11 +46,13 @@
                             <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Patient</label>
-                                    <select name="patient_id"
+                                    <select name="patient_id" id="patient_id"
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                         @foreach ($patient as $item)
                                             <option value="{{ $item->id }}" @if (!empty($data->patient_id) && $data->patient_id == $item->id) selected @endif>
-                                                {{ $item->name }}</option>
+                                                {{ $item->name }},
+                                                {{ __('UHD') }}-{{ str_pad($item->ummah->id, 5, '0', STR_PAD_LEFT) }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -166,6 +185,12 @@
         </div>
     </div>
     @push('scripts')
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+        <script>
+            $('#doctor_id').select2();
+            $('#patient_id').select2();
+        </script>
         <script>
             const MONTH_NAMES = [
                 "January",

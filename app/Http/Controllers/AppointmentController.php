@@ -19,8 +19,8 @@ class AppointmentController extends Controller
     public function create()
     {
         $action = URL::route('appointment.store');
-        $patient = Patient::get();
-        $doctor = Doctor::get();
+        $patient = Patient::with('ummah')->get();
+        $doctor = Doctor::with('department')->get();
 
         return view('forms/appointment_ea', compact('action', 'doctor', 'patient'));
     }
@@ -64,8 +64,8 @@ class AppointmentController extends Controller
     {
         $action = URL::route('appointment.update', ['id' => $id]);
         $data = Appointment::findOrFail($id);
-        $patient = Patient::get();
-        $doctor = Doctor::get();
+        $patient = Patient::with('ummah')->get();
+        $doctor = Doctor::with('department')->get();
 
         return view('forms/appointment_ea', compact('action', 'data', 'patient', 'doctor'));
     }

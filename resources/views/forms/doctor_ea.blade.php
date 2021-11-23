@@ -24,7 +24,7 @@
                             <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Department Name</label>
-                                    <select name="department_id"
+                                    <select name="department_id" id="department_id"
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                         @foreach ($dept_data as $item)
                                             <option value="{{ $item->id }}" @if (!empty($data->department_id) && $data->department_id == $item->id) selected @endif>
@@ -121,4 +121,9 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        <script>
+            $('#department_id').select2();
+        </script>
+    @endpush
 </x-app-layout>

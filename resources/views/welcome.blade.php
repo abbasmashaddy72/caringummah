@@ -77,19 +77,19 @@
                 id="nav-content">
                 <ul class="items-center justify-end flex-1 list-reset lg:flex">
                     <li class="mr-3">
-                        <a class="inline-block px-4 py-2 text-black no-underline hover:text-gray-800 hover:text-underline"
+                        <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
                             href="#">Home</a>
                     </li>
                     <li class="mr-3">
-                        <a class="inline-block px-4 py-2 text-black no-underline hover:text-gray-800 hover:text-underline"
-                            href="#about">About Us</a>
+                        <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
+                            href="#about">Mission</a>
                     </li>
                     <li class="mr-3">
-                        <a class="inline-block px-4 py-2 text-black no-underline hover:text-gray-800 hover:text-underline"
+                        <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
                             href="#khidmath">Khidmath</a>
                     </li>
                     <li class="mr-3">
-                        <a class="inline-block px-4 py-2 text-black no-underline hover:text-gray-800 hover:text-underline"
+                        <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
                             href="#contact_us">Contact Us</a>
                     </li>
                 </ul>
@@ -155,28 +155,19 @@
     <section id="about" class="py-8 bg-white border-b">
         <div class="container max-w-5xl m-8 mx-auto">
             <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 ">
-                About Us
+                Mission
             </h1>
             <div class="w-full mb-4">
                 <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
             </div>
             <div class="flex flex-wrap">
                 <div class="w-full p-6">
-                    <h3 class="mb-3 text-3xl font-bold leading-none text-gray-800">
+                    {{-- <h3 class="mb-3 text-3xl font-bold leading-none text-gray-800">
                         Syed Abbas Mashaddy
-                    </h3>
-                    <p class="mb-8 text-gray-600">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                        at ipsum eu nunc commodo posuere et sit amet ligula.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque molestias quisquam dignissimos ad
-                        illum consequatur, deleniti commodi, libero asperiores dolore veritatis ullam in omnis
-                        reprehenderit error aperiam, perferendis totam earum.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium natus cumque tenetur
-                        nostrum nobis, eveniet sunt perferendis necessitatibus magnam ipsum quam fugit esse maiores nemo
-                        est. Eaque optio ipsa quas.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, esse quo soluta blanditiis
-                        molestias saepe dolorum maxime. Porro quidem, dignissimos explicabo tenetur atque perspiciatis
-                        eum obcaecati minus tempora voluptatum sint?
+                    </h3> --}}
+                    <p class="mb-8 text-center text-gray-600">
+                        To connect ummah with the teachings of Quran & Hadith. And encourage them to help each other in
+                        whatever way they can contribute either by time, intellect, money, skills, etc.
                     </p>
                 </div>
             </div>
