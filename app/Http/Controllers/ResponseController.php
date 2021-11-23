@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Response;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ResponseController extends Controller
@@ -35,7 +36,21 @@ class ResponseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:100', 'min:3'],
+            'phone' => ['required', 'numeric', 'phone'],
+            'email' => ['required', 'email'],
+            'message' => ['required'],
+        ]);
+        Response::insert([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'message' => $request->message,
+            'created_at' => Carbon::now(),
+        ]);
+
+        return redirect()->route('welcome')->with('message', 'Thanks For Feedback');
     }
 
     /**

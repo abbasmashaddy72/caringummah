@@ -53,7 +53,14 @@ class DoctorTable extends PowerGridComponent
     */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'department' => [
+                'title'
+            ],
+            'locality' => [
+                'name'
+            ]
+        ];
     }
 
     /*
@@ -106,20 +113,24 @@ class DoctorTable extends PowerGridComponent
             Column::add()
                 ->title(__('NAME'))
                 ->field('name')
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
 
             Column::add()
                 ->title(__('DEPARTMENT'))
-                ->field('department_name'),
+                ->field('department_name')
+                ->searchable(),
 
             Column::add()
                 ->title(__('LOCALITY'))
-                ->field('locality'),
+                ->field('locality')
+                ->searchable(),
 
             Column::add()
                 ->title(__('QUALIFICATION'))
                 ->field('qualification')
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
 
             Column::add()
                 ->title(__('PHONE'))
@@ -128,7 +139,8 @@ class DoctorTable extends PowerGridComponent
             Column::add()
                 ->title(__('CLINIC / HOSPITAL NAME'))
                 ->field('clinic_hospital_name')
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
 
             Column::add()
                 ->title(__('CLINIC / HOSPITAL ADDRESS'))
@@ -138,15 +150,18 @@ class DoctorTable extends PowerGridComponent
 
             Column::add()
                 ->title(__('MONTHLY SLOTS'))
-                ->field('monthly_slots'),
+                ->field('monthly_slots')
+                ->sortable(),
 
             Column::add()
                 ->title(__('TOTAL PATIENT COUNT'))
-                ->field('total_patient_count'),
+                ->field('total_patient_count')
+                ->sortable(),
 
             Column::add()
                 ->title(__('MONTHLY PATIENT COUNT'))
-                ->field('monthly_patient_count'),
+                ->field('monthly_patient_count')
+                ->sortable(),
         ];
     }
 

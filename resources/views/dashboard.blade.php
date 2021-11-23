@@ -24,6 +24,13 @@
                             <div class="w-1/2 p-4 sm:w-1/4">
                                 <div class="p-2 bg-indigo-500 rounded-lg xl:p-6">
                                     <h2 class="text-3xl font-medium text-white title-font sm:text-4xl">
+                                        {{ $connection_count }}</h2>
+                                    <p class="font-bold leading-relaxed text-gray-100">Connections</p>
+                                </div>
+                            </div>
+                            <div class="w-1/2 p-4 sm:w-1/4">
+                                <div class="p-2 bg-indigo-500 rounded-lg xl:p-6">
+                                    <h2 class="text-3xl font-medium text-white title-font sm:text-4xl">
                                         {{ $ummah_count }}</h2>
                                     <p class="font-bold leading-relaxed text-gray-100">Ummahs</p>
                                 </div>
@@ -45,13 +52,6 @@
                             <div class="w-1/2 p-4 sm:w-1/4">
                                 <div class="p-2 bg-indigo-500 rounded-lg xl:p-6">
                                     <h2 class="text-3xl font-medium text-white title-font sm:text-4xl">
-                                        {{ $connection_count }}</h2>
-                                    <p class="font-bold leading-relaxed text-gray-100">Connections</p>
-                                </div>
-                            </div>
-                            <div class="w-1/2 p-4 sm:w-1/4">
-                                <div class="p-2 bg-indigo-500 rounded-lg xl:p-6">
-                                    <h2 class="text-3xl font-medium text-white title-font sm:text-4xl">
                                         {{ $response_count }}</h2>
                                     <p class="font-bold leading-relaxed text-gray-100">Response</p>
                                 </div>
@@ -60,7 +60,7 @@
                     </div>
                 </section>
                 <section class="text-gray-600 body-font">
-                    <div class="container px-5 py-24 mx-auto">
+                    <div class="container px-5 mx-auto">
                         <div class="flex flex-wrap -m-4">
                             <div class="w-full p-4 md:w-1/2">
                                 <div class="container p-4 mx-auto mt-8 space-y-4 sm:p-0">
@@ -88,6 +88,43 @@
                                     <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
                                         <div class="flex-1 p-4 bg-white border rounded shadow" style="height: 32rem;">
                                             <livewire:livewire-pie-chart :pie-chart-model="$pieChartModel2" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="text-gray-600 body-font">
+                    <div class="container px-5 mx-auto">
+                        <div class="flex flex-wrap -m-4">
+                            <div class="w-full p-4 md:w-1/2">
+                                <div class="container p-4 mx-auto mt-8 space-y-4 sm:p-0">
+                                    <div class="flex">
+                                        <div class="m-auto">
+                                            <h3 class="text-xl font-semibold leading-tight text-gray-800">Connections
+                                                Count
+                                                Locality Wise</h3>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                                        <div class="flex-1 p-4 bg-white border rounded shadow" style="height: 32rem;">
+                                            <livewire:livewire-pie-chart :pie-chart-model="$pieChartModel3" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full p-4 md:w-1/2">
+                                <div class="container p-4 mx-auto mt-8 space-y-4 sm:p-0">
+                                    <div class="flex">
+                                        <div class="m-auto">
+                                            <h3 class="text-xl font-semibold leading-tight text-gray-800">Ummah Count
+                                                Locality Wise</h3>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                                        <div class="flex-1 p-4 bg-white border rounded shadow" style="height: 32rem;">
+                                            <livewire:livewire-pie-chart :pie-chart-model="$pieChartModel4" />
                                         </div>
                                     </div>
                                 </div>

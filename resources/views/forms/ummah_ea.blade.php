@@ -142,7 +142,12 @@
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                 </div>
                             </div>
-                            @livewire('city-locality-dropdown')
+                            @if (Route::currentRouteName() == 'ummah.create')
+                                @livewire('city-locality-dropdown')
+                            @else
+                                @livewire('city-locality-dropdown',['state_id' => $state_id, 'city_id' =>
+                                $city_id,'locality_id' => $locality_id])
+                            @endif
                             <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Family Members</label>

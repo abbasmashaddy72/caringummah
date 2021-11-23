@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DoctorRequest;
+use App\Models\City;
 use App\Models\Department;
 use App\Models\Doctor;
+use App\Models\Locality;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 
@@ -78,9 +80,12 @@ class DoctorController extends Controller
     {
         $data = $doctor->findOrFail($id);
         $dept_data = Department::get();
+        $city_id = Locality::where('id', $data->locality_id)->pluck('city_id')->first();
+        $state_id = City::where('id', $city_id)->pluck('state_id')->first();
+        $locality_id = $data->locality_id;
         $action = URL::route('doctor.update', ['id' => $id]);
 
-        return view('forms/doctor_ea', compact('data', 'dept_data', 'action'));
+        return view('forms/doctor_ea', compact('data', 'dept_data', 'action', 'city_id', 'state_id', 'locality_id'));
     }
 
     /**

@@ -15,7 +15,7 @@ use Colors\RandomColor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class Dashboard extends Controller
+class DashboardController extends Controller
 {
     public $firstRun = true;
     public $showDataLabels = true;
@@ -56,6 +56,40 @@ class Dashboard extends Controller
                 ->setOpacity(0.85)
         );
 
+        $connection_locality = Connection::with('locality')->get();
+
+        $pieChartModel3 = $connection_locality->groupBy('locality_id')->reduce(
+            function ($pieChartModel3, $connection_locality) {
+                $connections = $connection_locality->first()->locality->name;
+                $count = $connection_locality->count('id');
+                $color = RandomColor::one(['luminosity' => 'dark', 'format' => 'hex']);
+                return $pieChartModel3->addSlice($connections, $count, $color);
+            },
+            (new PieChartModel())
+                ->setAnimated($this->firstRun)
+                ->setLegendVisibility(true)
+                ->legendPositionLeft()
+                ->setDataLabelsEnabled($this->showDataLabels)
+                ->setOpacity(0.85)
+        );
+
+        $ummah_locality = Ummah::with('locality')->get();
+
+        $pieChartModel4 = $ummah_locality->groupBy('locality_id')->reduce(
+            function ($pieChartModel4, $ummah_locality) {
+                $ummahas = $ummah_locality->first()->locality->name;
+                $count = $ummah_locality->count('id');
+                $color = RandomColor::one(['luminosity' => 'dark', 'format' => 'hex']);
+                return $pieChartModel4->addSlice($ummahas, $count, $color);
+            },
+            (new PieChartModel())
+                ->setAnimated($this->firstRun)
+                ->setLegendVisibility(true)
+                ->legendPositionLeft()
+                ->setDataLabelsEnabled($this->showDataLabels)
+                ->setOpacity(0.85)
+        );
+
         $appointment_dated = Appointment::select(DB::raw('count(*) as total'), DB::raw("(DATE_FORMAT(appointment_date, '%M %Y')) as month_year"))->orderBy('appointment_date')->groupBy(DB::raw("DATE_FORMAT(appointment_date, '%M %Y')"))->get();
 
         $lineChartModel = $appointment_dated->reduce(
@@ -75,6 +109,6 @@ class Dashboard extends Controller
         $connection_count = Connection::count();
         $response_count = Response::count();
 
-        return view('dashboard', compact(['doctor_count', 'ummah_count', 'patient_count', 'appointment_count', 'pieChartModel1', 'pieChartModel2', 'lineChartModel', 'response_count', 'connection_count']));
+        return view('dashboard', compact(['doctor_count', 'ummah_count', 'patient_count', 'appointment_count', 'pieChartModel1', 'pieChartModel2', 'pieChartModel3', 'pieChartModel4', 'lineChartModel', 'response_count', 'connection_count']));
     }
 }

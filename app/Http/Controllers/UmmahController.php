@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UmmahRequest;
+use App\Models\City;
+use App\Models\Locality;
 use App\Models\Ummah;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -95,10 +97,13 @@ class UmmahController extends Controller
     public function edit(Ummah $ummah, $id)
     {
         $data = $ummah->findOrFail($id);
+        $city_id = Locality::where('id', $data->locality_id)->pluck('city_id')->first();
+        $state_id = City::where('id', $city_id)->pluck('state_id')->first();
+        $locality_id = $data->locality_id;
         $action = URL::route('ummah.update', ['id' => $id]);
         $age = Carbon::parse($data->date_of_birth)->diff(Carbon::now())->format('%y');
 
-        return view('forms/ummah_ea', compact('data', 'action', 'age'));
+        return view('forms/ummah_ea', compact('data', 'action', 'age', 'city_id', 'state_id', 'locality_id'));
     }
 
     /**

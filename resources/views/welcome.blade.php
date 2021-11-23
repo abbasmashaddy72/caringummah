@@ -16,7 +16,36 @@
 
     <style>
         .gradient {
-            background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+            background: rgb(0, 212, 255);
+            background: linear-gradient(45deg, rgba(0, 212, 255, 1) 0%, rgba(9, 9, 121, 1) 20%, rgba(8, 27, 133, 1) 80%, rgba(0, 212, 255, 1) 100%);
+            /* background: linear-gradient(90deg, #d53369 0%, #daae51 100%); */
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .hover\:bg-red-700:hover {
+            background-color: #c53030;
+        }
+
+        .bg-red-500 {
+            background-color: #f56565;
+        }
+
+        .hover\:bg-green-700:hover {
+            background-color: #047857;
+        }
+
+        .bg-green-500 {
+            background-color: #10B981;
         }
 
     </style>
@@ -27,31 +56,7 @@
     <nav id="header" class="fixed top-0 z-30 w-full text-white">
         <div class="container flex flex-wrap items-center justify-between w-full py-2 mx-auto mt-0 ">
             <div class="flex items-center pl-4">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
-                    <style>
-                        @keyframes pulsate {
-
-                            0%,
-                            to {
-                                transform: scale(1);
-                            }
-
-                            50% {
-                                transform: scale(0.9);
-                            }
-                        }
-
-                    </style>
-                    <g style="
-                  animation: pulsate 0.5s ease-in-out infinite both;
-                  transform-origin: center center;
-                " stroke-width="1.5">
-                        <path stroke="#0A0A30"
-                            d="M11.515 6.269l.134.132a.5.5 0 00.702 0l.133-.132A4.44 4.44 0 0115.599 5c.578 0 1.15.112 1.684.33a4.41 4.41 0 011.429.939c.408.402.733.88.954 1.406a4.274 4.274 0 010 3.316 4.331 4.331 0 01-.954 1.405l-6.36 6.259a.5.5 0 01-.702 0l-6.36-6.259A4.298 4.298 0 014 9.333c0-1.15.464-2.252 1.29-3.064A4.439 4.439 0 018.401 5c1.168 0 2.288.456 3.114 1.269z" />
-                        <path stroke="#265BFF" stroke-linecap="round" stroke-linejoin="round"
-                            d="M15.5 7.5c.802.304 1.862 1.43 2 2" />
-                    </g>
-                </svg>
+                @include('components.svg')
                 <a class="text-2xl font-bold text-white no-underline toggleColour hover:no-underline lg:text-4xl"
                     href="#">
                     <!--Icon from: http://www.potlabicons.com/ -->
@@ -72,19 +77,24 @@
                 id="nav-content">
                 <ul class="items-center justify-end flex-1 list-reset lg:flex">
                     <li class="mr-3">
-                        <a class="inline-block px-4 py-2 font-bold text-black no-underline" href="#">Home</a>
+                        <a class="inline-block px-4 py-2 text-black no-underline hover:text-gray-800 hover:text-underline"
+                            href="#">Home</a>
                     </li>
                     <li class="mr-3">
                         <a class="inline-block px-4 py-2 text-black no-underline hover:text-gray-800 hover:text-underline"
-                            href="#">About Ummah</a>
+                            href="#about">About Us</a>
                     </li>
                     <li class="mr-3">
                         <a class="inline-block px-4 py-2 text-black no-underline hover:text-gray-800 hover:text-underline"
-                            href="#">Branches</a>
+                            href="#khidmath">Khidmath</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block px-4 py-2 text-black no-underline hover:text-gray-800 hover:text-underline"
+                            href="#contact_us">Contact Us</a>
                     </li>
                 </ul>
                 <a href="{{ route('login') }}" <button id="navAction"
-                    class="px-8 py-4 mx-auto mt-4 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow opacity-75 lg:mx-0 hover:underline lg:mt-0 focus:outline-none focus:shadow-outline hover:scale-105">
+                    class="px-8 py-4 mx-auto mt-4 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow opacity-90 lg:mx-0 hover:underline lg:mt-0 focus:outline-none focus:shadow-outline hover:scale-105">
                     Login
                     </button>
                 </a>
@@ -97,23 +107,25 @@
         <div class="container flex flex-col flex-wrap items-center px-3 mx-auto md:flex-row">
             <!--Left Col-->
             <div class="flex flex-col items-start justify-center w-full text-center md:w-2/5 md:text-left">
-                <p class="w-full uppercase tracking-loose">What business are you?</p>
                 <h1 class="my-4 text-5xl font-bold leading-tight">
                     <!-- Caring about your Happiness as  -->
-                    Happiness begins with good Health.
+                    مَا لَكُمْ لَا تَنَاصَرُونَ
 
                 </h1>
                 <p class="mb-8 text-2xl leading-normal">
-                    Saving People Saving Communities.
+                    What is the matter with you? Why do you not help one another?
                 </p>
-                <button
-                    class="px-8 py-4 mx-auto my-6 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow-lg lg:mx-0 hover:underline focus:outline-none focus:shadow-outline hover:scale-105">
-                    Contact Us
-                </button>
+                <p class="w-full uppercase tracking-loose">Quran (37:25)</p>
+                <a href="tel:+91-74165-45740">
+                    <button
+                        class="px-8 py-4 mx-auto my-6 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow-lg lg:mx-0 hover:underline focus:outline-none focus:shadow-outline hover:scale-105">
+                        +91-74165-45740
+                    </button>
+                </a>
             </div>
             <!--Right Col-->
             <div class="w-full py-6 text-center md:w-3/5">
-                <img class="z-50 w-full md:w-4/5" src="../images/website/hero.png" />
+                <img class="z-50 w-full md:w-4/5" src="{{ asset('images/website/hero.png') }}" />
             </div>
         </div>
     </div>
@@ -140,49 +152,37 @@
             </g>
         </svg>
     </div>
-    <section class="py-8 bg-white border-b">
+    <section id="about" class="py-8 bg-white border-b">
         <div class="container max-w-5xl m-8 mx-auto">
             <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 ">
-                Our Doctors
+                About Us
             </h1>
             <div class="w-full mb-4">
                 <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
             </div>
             <div class="flex flex-wrap">
-                <div class="w-5/6 p-6 sm:w-1/2">
+                <div class="w-full p-6">
                     <h3 class="mb-3 text-3xl font-bold leading-none text-gray-800">
                         Syed Abbas Mashaddy
                     </h3>
                     <p class="mb-8 text-gray-600">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
                         at ipsum eu nunc commodo posuere et sit amet ligula.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque molestias quisquam dignissimos ad
+                        illum consequatur, deleniti commodi, libero asperiores dolore veritatis ullam in omnis
+                        reprehenderit error aperiam, perferendis totam earum.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium natus cumque tenetur
+                        nostrum nobis, eveniet sunt perferendis necessitatibus magnam ipsum quam fugit esse maiores nemo
+                        est. Eaque optio ipsa quas.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, esse quo soluta blanditiis
+                        molestias saepe dolorum maxime. Porro quidem, dignissimos explicabo tenetur atque perspiciatis
+                        eum obcaecati minus tempora voluptatum sint?
                     </p>
-                </div>
-                <div class="w-full p-6 sm:w-1/2">
-                    <img class="w-5/6 mx-auto sm:h-64" src="../images/website/img-2.png" />
-
-                </div>
-            </div>
-            <div class="flex flex-col-reverse flex-wrap sm:flex-row">
-                <div class="w-full p-6 mt-6 sm:w-1/2">
-                    <img class="w-5/6 mx-auto sm:h-64" src="../images/website/img-1.jpg" />
-
-                </div>
-                <div class="w-full p-6 mt-6 sm:w-1/2">
-                    <div class="align-middle">
-                        <h3 class="mb-3 text-3xl font-bold leading-none text-gray-800">
-                            Lorem ipsum dolor sit amet
-                        </h3>
-                        <p class="mb-8 text-gray-600">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                            at ipsum eu nunc commodo posuere et sit amet ligula.
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-8 bg-white border-b">
+    <section id="khidmath" class="py-8 bg-white border-b">
         <div class="container flex flex-wrap pt-4 pb-12 mx-auto">
             <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 ">
                 Khidmaat
@@ -191,7 +191,7 @@
                 <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
             </div>
             <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
-                <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow ">
+                <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg ">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
                         <div class="w-full px-6 text-xl font-bold text-gray-800">
                             Hidayyah for Ummah
@@ -202,17 +202,17 @@
                         </p>
                     </a>
                 </div>
-                <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow ">
+                {{-- <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow ">
                     <div class="flex items-center justify-start">
                         <button
                             class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105">
                             Action
                         </button>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
-                <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow ">
+                <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg ">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
                         <div class="w-full px-6 text-xl font-bold text-gray-800">
                             Doctors for Ummah
@@ -223,17 +223,17 @@
                         </p>
                     </a>
                 </div>
-                <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow ">
+                {{-- <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow ">
                     <div class="flex items-center justify-center">
                         <button
                             class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105">
                             Action
                         </button>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
-                <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow ">
+                <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg ">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
                         <div class="w-full px-6 text-xl font-bold text-gray-800">
                             Sunday Clinics for the Poor
@@ -243,14 +243,14 @@
                         </p>
                     </a>
                 </div>
-                <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow ">
+                {{-- <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow ">
                     <div class="flex items-center justify-end">
                         <button
                             class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105">
                             Action
                         </button>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -281,123 +281,70 @@
             </g>
         </g>
     </svg>
-    <section class="container py-6 mx-auto mb-12 text-center">
-        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white ">
-            Join Hands With Us
-        </h1>
-        <div class="w-full mb-4">
-            <div class="w-1/6 h-1 py-0 mx-auto my-0 bg-white rounded-t opacity-25"></div>
-        </div>
-        <h3 class="my-4 text-3xl leading-tight">
-            <!-- Caring about your Happiness as -->
-            To Serve & Strengthen the Society.
-        </h3>
-        <button
-            class="px-8 py-4 mx-auto my-6 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow-lg lg:mx-0 hover:underline focus:outline-none focus:shadow-outline hover:scale-105">
-            <a href="tel:+91-74165-45740">Contact Us!</a>
-        </button>
-    </section>
-    <!--Footer-->
-    <footer class="bg-white">
-        <div class="container px-8 mx-auto">
-            <div class="flex flex-col w-full py-6 md:flex-row">
-                <div class="flex-1 mb-6 text-black">
-                    <a class="text-2xl font-bold text-pink-600 no-underline hover:no-underline lg:text-4xl" href="#">
-                        <!--Icon from: http://www.potlabicons.com/ -->
-                        <svg class="inline h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="none">
-                            <style>
-                                @keyframes pulsate {
-
-                                    0%,
-                                    to {
-                                        transform: scale(1);
-                                    }
-
-                                    50% {
-                                        transform: scale(0.9);
-                                    }
-                                }
-
-                            </style>
-                            <g style="
-                      animation: pulsate 0.5s ease-in-out infinite both;
-                      transform-origin: center center;
-                    " stroke-width="1.5">
-                                <path stroke="#0A0A30"
-                                    d="M11.515 6.269l.134.132a.5.5 0 00.702 0l.133-.132A4.44 4.44 0 0115.599 5c.578 0 1.15.112 1.684.33a4.41 4.41 0 011.429.939c.408.402.733.88.954 1.406a4.274 4.274 0 010 3.316 4.331 4.331 0 01-.954 1.405l-6.36 6.259a.5.5 0 01-.702 0l-6.36-6.259A4.298 4.298 0 014 9.333c0-1.15.464-2.252 1.29-3.064A4.439 4.439 0 018.401 5c1.168 0 2.288.456 3.114 1.269z" />
-                                <path stroke="#265BFF" stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15.5 7.5c.802.304 1.862 1.43 2 2" />
-                            </g>
-                        </svg>
-                        Caring Ummah
-                    </a>
+    <section id="contact_us" class="container py-6 mx-auto mb-12">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-wrap -m-4">
+                <div class="w-full p-4 mt-40 text-center md:w-1/2">
+                    <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white ">
+                        Join Hands With Us
+                    </h1>
+                    <div class="w-full mb-4">
+                        <div class="w-1/6 h-1 py-0 mx-auto my-0 bg-white rounded-t opacity-25"></div>
+                    </div>
+                    <h3 class="my-4 text-3xl leading-tight">
+                        <!-- Caring about your Happiness as -->
+                        To Serve & Strengthen the Society.
+                    </h3>
+                    <button
+                        class="px-8 py-4 mx-auto my-6 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow-lg lg:mx-0 hover:underline focus:outline-none focus:shadow-outline hover:scale-105">
+                        <a href="tel:+91-74165-45740">Contact Us!</a>
+                    </button>
                 </div>
-                <div class="flex-1">
-                    <p class="text-gray-500 uppercase md:mb-6">Links</p>
-                    <ul class="mb-6 list-reset">
-                        <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-                            <a href="#" class="text-gray-800 no-underline hover:underline hover:text-pink-500">FAQ</a>
-                        </li>
-                        <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-                            <a href="#" class="text-gray-800 no-underline hover:underline hover:text-pink-500">Help</a>
-                        </li>
-                        <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="text-gray-800 no-underline hover:underline hover:text-pink-500">Support</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex-1">
-                    <p class="text-gray-500 uppercase md:mb-6">Legal</p>
-                    <ul class="mb-6 list-reset">
-                        <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="text-gray-800 no-underline hover:underline hover:text-pink-500">Terms</a>
-                        </li>
-                        <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="text-gray-800 no-underline hover:underline hover:text-pink-500">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex-1">
-                    <p class="text-gray-500 uppercase md:mb-6">Social</p>
-                    <ul class="mb-6 list-reset">
-                        <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="text-gray-800 no-underline hover:underline hover:text-pink-500">Facebook</a>
-                        </li>
-                        <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="text-gray-800 no-underline hover:underline hover:text-pink-500">Linkedin</a>
-                        </li>
-                        <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="text-gray-800 no-underline hover:underline hover:text-pink-500">Twitter</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex-1">
-                    <p class="text-gray-500 uppercase md:mb-6">Company</p>
-                    <ul class="mb-6 list-reset">
-                        <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-                            <a href="#" class="text-gray-800 no-underline hover:underline hover:text-pink-500">Official
-                                Blog</a>
-                        </li>
-                        <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-                            <a href="#" class="text-gray-800 no-underline hover:underline hover:text-pink-500">About
-                                Us</a>
-                        </li>
-                        <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="text-gray-800 no-underline hover:underline hover:text-pink-500">Contact</a>
-                        </li>
-                    </ul>
+                <div
+                    class="relative z-10 flex flex-col w-full p-4 p-8 mt-10 bg-white rounded-lg shadow-md md:w-1/2 md:ml-auto md:mt-0">
+                    <h2 class="mb-1 text-lg font-medium text-center text-gray-900 title-font">Join Hands With Us</h2>
+                    <div class="max-w-full py-4 sm:px-6 lg:px-8">
+                        <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
+                            @include('components.message')
+                        </div>
+                    </div>
+                    <form class="flex-1 mt-6 xl:mt-0" method="POST" action="{{ route('response.store') }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="w-full p-2">
+                            <div class="relative">
+                                <label for="name" class="text-sm leading-7 text-gray-600">Name</label>
+                                <input type="text" id="name" value="{{ old('name') }}" name="name"
+                                    class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+                            </div>
+                        </div>
+                        <div class="w-full p-2">
+                            <div class="relative">
+                                <label for="phone" class="text-sm leading-7 text-gray-600">Contcat No.</label>
+                                <input type="number" id="phone" value="{{ old('phone') }}" name="phone"
+                                    class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+                            </div>
+                        </div>
+                        <div class="w-full p-2">
+                            <div class="relative">
+                                <label for="email" class="text-sm leading-7 text-gray-600">Email</label>
+                                <input type="text" id="email" value="{{ old('email') }}" name="email"
+                                    class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
+                            </div>
+                        </div>
+                        <div class="w-full p-2">
+                            <label for="message" class="text-sm leading-7 text-gray-600">What services you can
+                                provide?</label>
+                            <textarea id="message" name="message"
+                                class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">{{ old('message') }}</textarea>
+                        </div>
+                        <button
+                            class="px-6 py-2 ml-2.5 text-lg text-white bg-blue-900 border-0 rounded focus:outline-none hover:bg-blue-700">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </footer>
+    </section>
 
     <!-- jQuery if you need it
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

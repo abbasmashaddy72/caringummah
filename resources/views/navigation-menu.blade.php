@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="flex items-center flex-shrink-0">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block w-auto h-9" />
+                        {{-- <x-jet-application-mark class="block w-auto h-9" /> --}}
+                        <img class="block w-auto h-9" src="{{ asset('images/website/logo.png ') }}" />
                     </a>
                 </div>
 
