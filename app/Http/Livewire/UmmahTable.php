@@ -40,7 +40,7 @@ class UmmahTable extends PowerGridComponent
     */
     public function datasource(): ?Builder
     {
-        return Ummah::query()->with('locality');
+        return Ummah::query()->with('locality', 'connection');
     }
 
     /*
@@ -52,7 +52,15 @@ class UmmahTable extends PowerGridComponent
     */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'connection' => [
+                'name',
+                'type'
+            ],
+            'locality' => [
+                'name'
+            ]
+        ];
     }
 
     /*
@@ -69,10 +77,14 @@ class UmmahTable extends PowerGridComponent
             ->addColumn('id')
             ->addColumn('name')
             ->addColumn('phone')
-            ->addColumn('connected_with')
-            ->addColumn('qualification')
+            ->addColumn('connected_with', function (Ummah $model) {
+                return $model->connection->type;
+            })
+            ->addColumn('connected_where', function (Ummah $model) {
+                return $model->connection->name;
+            })
             ->addColumn('occupation')
-            ->addColumn('connected_where')
+            ->addColumn('qualification')
             ->addColumn('locality', function (Ummah $model) {
                 return $model->locality->name;
             })
@@ -98,7 +110,8 @@ class UmmahTable extends PowerGridComponent
             Column::add()
                 ->title(__('NAME'))
                 ->field('name')
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
 
             Column::add()
                 ->title(__('PHONE'))
@@ -106,27 +119,32 @@ class UmmahTable extends PowerGridComponent
 
             Column::add()
                 ->title(__('LOCALITY'))
-                ->field('locality'),
+                ->field('locality')
+                ->searchable(),
 
             Column::add()
                 ->title(__('CONNECTED WITH'))
                 ->field('connected_with')
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
 
             Column::add()
                 ->title(__('CONNECTED WHERE'))
                 ->field('connected_where')
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
 
             Column::add()
                 ->title(__('QUALIFICATION'))
                 ->field('qualification')
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
 
             Column::add()
                 ->title(__('OCCUPATION'))
                 ->field('occupation')
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
 
             Column::add()
                 ->title(__('MEMBER COUNT'))

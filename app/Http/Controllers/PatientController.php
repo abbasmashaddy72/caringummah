@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PatientRequest;
 use App\Models\Appointment;
+use App\Models\City;
 use App\Models\Doctor;
+use App\Models\Locality;
 use App\Models\Patient;
 use App\Models\Ummah;
 use Carbon\Carbon;
@@ -102,9 +104,12 @@ class PatientController extends Controller
         $ummah = Ummah::get();
         $data = Patient::findOrFail($id);
         $age = Carbon::parse($data->date_of_birth)->diff(Carbon::now())->format('%y');
+        $city_id = Locality::where('id', $data->locality_id)->pluck('city_id')->first();
+        $state_id = City::where('id', $city_id)->pluck('state_id')->first();
+        $locality_id = $data->locality_id;
         $doctor = Doctor::get();
 
-        return view('forms/patient_ea', compact('action', 'data', 'ummah', 'age', 'doctor'));
+        return view('forms/patient_ea', compact('action', 'data', 'city_id', 'state_id', 'locality_id', 'ummah', 'age', 'doctor'));
     }
 
     /**
@@ -116,6 +121,8 @@ class PatientController extends Controller
      */
     public function update(PatientRequest $request, Patient $patient, $id)
     {
+        $dob = new Carbon();
+        $date_of_birth = $dob->subYears($request->age)->format('Y-m-d');
         $request->validated();
         Patient::findOrFail($id)->update([
             'name' => $request->name,
@@ -123,6 +130,8 @@ class PatientController extends Controller
             'relation' => $request->relation,
             'locality_id' => $request->locality_id,
             'ummah_id' => $request->ummah_id,
+            'date_of_birth' => $date_of_birth,
+            'gender' => $request->gender,
         ]);
 
         return redirect()->route('patients')->with('message', 'Patient Updated Successfully');

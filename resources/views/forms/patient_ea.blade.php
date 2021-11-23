@@ -28,7 +28,12 @@
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                 </div>
                             </div>
-                            @livewire('city-locality-dropdown')
+                            @if (Route::currentRouteName() == 'patient.create')
+                                @livewire('city-locality-dropdown')
+                            @else
+                                @livewire('city-locality-dropdown',['state_id' => $state_id, 'city_id' =>
+                                $city_id,'locality_id' => $locality_id])
+                            @endif
                             <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Age</label>
@@ -54,11 +59,13 @@
                             <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Ummah Name</label>
-                                    <select name="ummah_id"
+                                    <select name="ummah_id" id="ummah_id"
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                         @foreach ($ummah as $item)
                                             <option value="{{ $item->id }}" @if (!empty($data->ummah_id) && $data->ummah_id == $item->id) selected @endif>
-                                                {{ $item->name }}, {{ $item->phone }} </option>
+                                                {{ $item->name }},
+                                                {{ __('UHD') }}-{{ str_pad($item->id, 5, '0', STR_PAD_LEFT) }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -69,7 +76,7 @@
                                     @php
                                         $family_members = ['father', 'mother', 'son', 'daughter', 'husband', 'wife', 'brother', 'sister', 'grandfather', 'grandmother', 'grandson', 'granddaughter', 'uncle', 'aunt', 'nephew', 'niece', 'cousin'];
                                     @endphp
-                                    <select name="relation"
+                                    <select name="relation" id="relation"
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                         @foreach ($family_members as $item)
                                             <option value="{{ $item }}" @if (!empty($data->relation) && $data->relation == $item) selected @endif>
@@ -78,15 +85,17 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="p-2 lg:w-1/2">
-                                <div class="relative mt-9">
-                                    <label for="appointment" class="text-sm leading-7 text-gray-600">Do You Need an
-                                        Appointment?</label>
-                                    <input type="checkbox" id="appointment" class="ml-8 form-checkbox"
-                                        name="appointment" @click="show = !show"
-                                        :aria-expanded="show ? 'true' : 'false'">
+                            @if (Route::currentRouteName() == 'patient.create')
+                                <div class="p-2 lg:w-1/2">
+                                    <div class="relative mt-9">
+                                        <label for="appointment" class="text-sm leading-7 text-gray-600">Do You Need an
+                                            Appointment?</label>
+                                        <input type="checkbox" id="appointment" class="ml-8 form-checkbox"
+                                            name="appointment" @click="show = !show"
+                                            :aria-expanded="show ? 'true' : 'false'">
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                     <div class="mx-auto lg:w-1/2 md:w-2/3" x-show="show">
@@ -94,7 +103,7 @@
                             <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label for="name" class="text-sm leading-7 text-gray-600">Doctor Name</label>
-                                    <select name="doctor_id"
+                                    <select name="doctor_id" id="doctor_id"
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                         @foreach ($doctor as $item)
                                             <option value="{{ $item->id }}" @if (!empty($data->doctor_id) && $data->doctor_id == $item->id) selected @endif>
@@ -367,6 +376,11 @@
                     },
                 };
             }
+        </script>
+        <script>
+            $('#ummah_id').select2();
+            $('#doctor_id').select2();
+            $('#relation').select2();
         </script>
     @endpush
 </x-app-layout>

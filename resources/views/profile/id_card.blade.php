@@ -4059,8 +4059,12 @@ AACAiQDPBDn1Ep0deAAAAABJRU5ErkJggg==" transform="matrix(0.3282 0 0 0.3282 -194.8
                 </div>
             </div>
             <div class="avatar">
-                <div class="img">
-                    <img src="https://raw.githubusercontent.com/MohcineDev/Business-Card/main/imgs/man.png" alt="">
+                <div class="max-h-24 max-w-24 img">
+                    @if (!empty($ummah->photo))
+                        <img src="{{ asset('images/ummah/' . $ummah->photo) }}" alt="{{ $ummah->name }}">
+                    @else
+                        <img src="https://raw.githubusercontent.com/MohcineDev/Business-Card/main/imgs/man.png" alt="">
+                    @endif
                 </div>
                 <p>{{ __('UHD') }}-{{ str_pad($ummah->id, 5, '0', STR_PAD_LEFT) }}</p>
             </div>
@@ -4077,8 +4081,8 @@ AACAiQDPBDn1Ep0deAAAAABJRU5ErkJggg==" transform="matrix(0.3282 0 0 0.3282 -194.8
                     <div>
                         <p>&nbsp;:&nbsp;{{ $ummah->name }}</p>
                         <p>&nbsp;:&nbsp;{{ $age }}</p>
-                        <p>&nbsp;:&nbsp;{{ $ummah->connected_with }}</p>
-                        <p>&nbsp;:&nbsp;{{ $ummah->connected_where }}</p>
+                        <p>&nbsp;:&nbsp;{{ $ummah->connection->type }}</p>
+                        <p>&nbsp;:&nbsp;{{ $ummah->connection->name }}</p>
                         <p>&nbsp;:&nbsp;{{ $ummah->qualification }}</p>
                         <p>&nbsp;:&nbsp;{{ $ummah->member_count }}</p>
                     </div>

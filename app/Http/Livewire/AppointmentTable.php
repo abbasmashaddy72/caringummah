@@ -55,7 +55,14 @@ class AppointmentTable extends PowerGridComponent
     */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'doctor' => [
+                'name'
+            ],
+            'patient' => [
+                'name'
+            ]
+        ];
     }
 
     /*
@@ -98,11 +105,13 @@ class AppointmentTable extends PowerGridComponent
 
             Column::add()
                 ->title(__('DOCTOR NAME'))
-                ->field('doctor_name'),
+                ->field('doctor_name')
+                ->searchable(),
 
             Column::add()
                 ->title(__('PATIENT NAME'))
-                ->field('patient_name'),
+                ->field('patient_name')
+                ->searchable(),
 
             Column::add()
                 ->title(__('APPOINTMENT DATE'))

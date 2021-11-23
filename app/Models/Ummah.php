@@ -35,4 +35,9 @@ class Ummah extends Model implements Auditable
     {
         return $this->belongsTo(Locality::class);
     }
+
+    public function connection()
+    {
+        return $this->belongsTo(Connection::class);
+    }
 }

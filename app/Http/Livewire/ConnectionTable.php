@@ -53,7 +53,11 @@ class ConnectionTable extends PowerGridComponent
     */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'locality' => [
+                'name'
+            ]
+        ];
     }
 
     /*
@@ -99,12 +103,14 @@ class ConnectionTable extends PowerGridComponent
 
             Column::add()
                 ->title(__('Type'))
-                ->field('type'),
+                ->field('type')
+                ->searchable(),
 
             Column::add()
                 ->title(__('LOCALITY'))
                 ->field('locality')
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
         ];
     }
 

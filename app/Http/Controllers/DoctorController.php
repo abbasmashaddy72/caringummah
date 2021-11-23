@@ -54,6 +54,7 @@ class DoctorController extends Controller
             'monthly_slots' => $request->monthly_slots,
             'extra_services' => $request->extra_services,
             'suggestions' => $request->suggestions,
+            'locality_id' => $request->locality_id,
             'department_id' => $request->department_id,
         ]);
         return redirect()->route('doctors')->with('message', 'Doctor Added Successfully');
@@ -108,6 +109,7 @@ class DoctorController extends Controller
             'monthly_slots' => $request->monthly_slots,
             'extra_services' => $request->extra_services,
             'suggestions' => $request->suggestions,
+            'locality_id' => $request->locality_id,
             'department_id' => $request->department_id,
         ]);
         return redirect()->route('doctors')->with('message', 'Doctor Updated Successfully');

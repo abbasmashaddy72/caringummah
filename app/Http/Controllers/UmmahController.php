@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UmmahRequest;
 use App\Models\City;
+use App\Models\Connection;
 use App\Models\Locality;
 use App\Models\Ummah;
 use Carbon\Carbon;
@@ -31,8 +32,9 @@ class UmmahController extends Controller
     public function create()
     {
         $action = URL::route('ummah.store');
+        $connections = Connection::get();
 
-        return view('forms/ummah_ea', compact('action'));
+        return view('forms/ummah_ea', compact('action', 'connections'));
     }
 
     /**
@@ -46,15 +48,15 @@ class UmmahController extends Controller
         $request->validated();
         if (!empty($request->attachments)) {
             $newImageName = Str::random(20) . '.' . $request->attachments->extension();
-            $request->attachments->move(public_path('assets/images/ummah'), $newImageName);
+            $request->attachments->move(public_path('images/ummah'), $newImageName);
         } else {
-            $newImageName = '';
+            $newImageName = [];
         }
         if (!empty($request->photo)) {
             $newImageName2 = Str::random(20) . '.' . $request->photo->extension();
-            $request->photo->move(public_path('assets/images/ummah'), $newImageName2);
+            $request->photo->move(public_path('images/ummah'), $newImageName2);
         } else {
-            $newImageName2 = '';
+            $newImageName2 = null;
         }
 
         $dob = new Carbon();
@@ -65,8 +67,7 @@ class UmmahController extends Controller
             'date_of_birth' => $date_of_birth,
             'phone' => $request->phone,
             'photo' => $newImageName2,
-            'connected_with' => $request->connected_with,
-            'connected_where' => $request->connected_where,
+            'connection_id' => $request->connection_id,
             'qualification' => $request->qualification,
             'occupation' => $request->occupation,
             'locality_id' => $request->locality_id,
@@ -102,8 +103,9 @@ class UmmahController extends Controller
         $locality_id = $data->locality_id;
         $action = URL::route('ummah.update', ['id' => $id]);
         $age = Carbon::parse($data->date_of_birth)->diff(Carbon::now())->format('%y');
+        $connections = Connection::get();
 
-        return view('forms/ummah_ea', compact('data', 'action', 'age', 'city_id', 'state_id', 'locality_id'));
+        return view('forms/ummah_ea', compact('data', 'action', 'age', 'city_id', 'state_id', 'locality_id', 'connections'));
     }
 
     /**
@@ -118,17 +120,29 @@ class UmmahController extends Controller
         $request->validated();
         if (!empty($request->attachments)) {
             $newImageName = Str::random(20) . '.' . $request->attachments->extension();
-            $request->attachments->move(public_path('assets/images/ummah'), $newImageName);
+            $request->attachments->move(public_path('images/ummah'), $newImageName);
         } else {
-            $newImageName = '01.png';
+            $newImageName = [];
         }
+        if (!empty($request->photo)) {
+            $newImageName2 = Str::random(20) . '.' . $request->photo->extension();
+            $request->photo->move(public_path('images/ummah'), $newImageName2);
+        } else {
+            $newImageName2 = null;
+        }
+
+        $dob = new Carbon();
+        $date_of_birth = $dob->subYears($request->age)->format('Y-m-d');
 
         Ummah::findOrFail($id)->update([
             'name' => $request->name,
+            'date_of_birth' => $date_of_birth,
             'phone' => $request->phone,
-            'connected_with' => $request->connected_with,
+            'photo' => $newImageName2,
+            'connection_id' => $request->connection_id,
             'qualification' => $request->qualification,
             'occupation' => $request->occupation,
+            'locality_id' => $request->locality_id,
             'member_count' => $request->member_count,
             'family_members' => $request->family_members,
             'attachments' => $newImageName,
@@ -152,7 +166,7 @@ class UmmahController extends Controller
 
     public function print($id)
     {
-        $ummah = Ummah::findOrFail($id);
+        $ummah = Ummah::with('connection')->findOrFail($id);
         $age = Carbon::parse($ummah->date_of_birth)->diff(Carbon::now())->format('%y years');
 
         return view('profile.id_card', compact('ummah', 'age'));

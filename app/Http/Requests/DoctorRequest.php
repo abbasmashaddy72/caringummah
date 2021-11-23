@@ -33,6 +33,7 @@ class DoctorRequest extends FormRequest
             'monthly_slots' => ['required', 'min:1'],
             'extra_services' => ['string'],
             'suggestions' => ['string'],
+            'locality_id' => ['required']
         ];
     }
 }

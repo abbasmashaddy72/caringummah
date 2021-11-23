@@ -27,10 +27,11 @@ class UmmahRequest extends FormRequest
             'name' => ['required', 'string', 'max:255', 'min:3'],
             'qualification' => ['required', 'max:255', 'min:3'],
             'phone' => ['required', 'string'],
-            'connected_with' => ['required', 'min:1'],
+            'connection_id' => ['required', 'min:1'],
             'occupation' => ['required', 'min:1'],
             'member_count' => ['required', 'min:1'],
             'family_members' => ['required', 'min:1'],
+            'locality_id' => ['required']
         ];
     }
 }

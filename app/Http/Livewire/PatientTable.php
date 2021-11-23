@@ -52,7 +52,14 @@ class PatientTable extends PowerGridComponent
     */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'locality' => [
+                'name'
+            ],
+            'ummah' => [
+                'name'
+            ]
+        ];
     }
 
     /*
@@ -96,7 +103,8 @@ class PatientTable extends PowerGridComponent
             Column::add()
                 ->title(__('NAME'))
                 ->field('name')
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
 
             Column::add()
                 ->title(__('PHONE'))
@@ -105,16 +113,19 @@ class PatientTable extends PowerGridComponent
             Column::add()
                 ->title(__('LOCALITY'))
                 ->field('locality')
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
 
             Column::add()
                 ->title(__('UMMAH NAME'))
-                ->field('ummah_name'),
+                ->field('ummah_name')
+                ->searchable(),
 
             Column::add()
                 ->title(__('RELATION'))
                 ->field('relation')
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
         ];
     }
 
