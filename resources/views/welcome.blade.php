@@ -14,121 +14,14 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet" />
 
-    <style>
-        .gradient {
-            background: rgb(0, 212, 255);
-            background: linear-gradient(45deg, rgba(0, 212, 255, 1) 0%, rgba(9, 9, 121, 1) 20%, rgba(8, 27, 133, 1) 80%, rgba(0, 212, 255, 1) 100%);
-            /* background: linear-gradient(90deg, #d53369 0%, #daae51 100%); */
-        }
-
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        /* Firefox */
-        input[type=number] {
-            -moz-appearance: textfield;
-        }
-
-        .hover\:bg-red-700:hover {
-            background-color: #c53030;
-        }
-
-        .bg-red-500 {
-            background-color: #f56565;
-        }
-
-        .hover\:bg-green-700:hover {
-            background-color: #047857;
-        }
-
-        .bg-green-500 {
-            background-color: #10B981;
-        }
-
-    </style>
+    @include('components.styles')
 </head>
 
 <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif">
     <!--Nav-->
-    <nav id="header" class="fixed top-0 z-30 w-full text-white">
-        <div class="container flex flex-wrap items-center justify-between w-full py-2 mx-auto mt-0 ">
-            <div class="flex items-center pl-4">
-                @include('components.svg')
-                <a class="text-2xl font-bold text-white no-underline toggleColour hover:no-underline lg:text-4xl"
-                    href="#">
-                    <!--Icon from: http://www.potlabicons.com/ -->
-
-                    Caring Ummah
-                </a>
-            </div>
-            <div class="block pr-4 lg:hidden">
-                <button id="nav-toggle"
-                    class="flex items-center p-1 text-pink-800 transition duration-300 ease-in-out transform hover:text-gray-900 focus:outline-none focus:shadow-outline hover:scale-105">
-                    <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <title>Menu</title>
-                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                    </svg>
-                </button>
-            </div>
-            <div class="z-20 flex-grow hidden w-full p-4 mt-2 text-black bg-white lg:flex lg:items-center lg:w-auto lg:mt-0 lg:bg-transparent lg:p-0"
-                id="nav-content">
-                <ul class="items-center justify-end flex-1 list-reset lg:flex">
-                    <li class="mr-3">
-                        <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
-                            href="#">Home</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
-                            href="#about">Mission</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
-                            href="#khidmath">Khidmath</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
-                            href="#contact_us">Contact Us</a>
-                    </li>
-                </ul>
-                <a href="{{ route('login') }}" <button id="navAction"
-                    class="px-8 py-4 mx-auto mt-4 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow opacity-90 lg:mx-0 hover:underline lg:mt-0 focus:outline-none focus:shadow-outline hover:scale-105">
-                    Login
-                    </button>
-                </a>
-            </div>
-        </div>
-        <hr class="py-0 my-0 border-b border-gray-100 opacity-25" />
-    </nav>
+    @include('components.nav')
     <!--Hero-->
-    <div class="pt-24">
-        <div class="container flex flex-col flex-wrap items-center px-3 mx-auto md:flex-row">
-            <!--Left Col-->
-            <div class="flex flex-col items-start justify-center w-full text-center md:w-2/5 md:text-left">
-                <h1 class="my-4 text-5xl font-bold leading-tight">
-                    <!-- Caring about your Happiness as  -->
-                    مَا لَكُمْ لَا تَنَاصَرُونَ
-
-                </h1>
-                <p class="mb-8 text-2xl leading-normal">
-                    What is the matter with you? Why do you not help one another?
-                </p>
-                <p class="w-full uppercase tracking-loose">Quran (37:25)</p>
-                <a href="tel:+91-74165-45740">
-                    <button
-                        class="px-8 py-4 mx-auto my-6 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow-lg lg:mx-0 hover:underline focus:outline-none focus:shadow-outline hover:scale-105">
-                        +91-74165-45740
-                    </button>
-                </a>
-            </div>
-            <!--Right Col-->
-            <div class="w-full py-6 text-center md:w-3/5">
-                <img class="z-50 w-full md:w-4/5" src="{{ asset('images/website/hero.png') }}" />
-            </div>
-        </div>
-    </div>
+    @include('components.hero')
     <div class="relative -mt-12 lg:-mt-24">
         <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -340,89 +233,7 @@
     <!-- jQuery if you need it
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     -->
-    <script>
-        var scrollpos = window.scrollY;
-        var header = document.getElementById("header");
-        var navcontent = document.getElementById("nav-content");
-        var navaction = document.getElementById("navAction");
-        var brandname = document.getElementById("brandname");
-        var toToggle = document.querySelectorAll(".toggleColour");
-
-        document.addEventListener("scroll", function() {
-            /*Apply classes for slide in bar*/
-            scrollpos = window.scrollY;
-
-            if (scrollpos > 10) {
-                header.classList.add("bg-white");
-                navaction.classList.remove("bg-white");
-                navaction.classList.add("gradient");
-                navaction.classList.remove("text-gray-800");
-                navaction.classList.add("text-white");
-                //Use to switch toggleColour colours
-                for (var i = 0; i < toToggle.length; i++) {
-                    toToggle[i].classList.add("text-gray-800");
-                    toToggle[i].classList.remove("text-white");
-                }
-                header.classList.add("shadow");
-                navcontent.classList.remove("bg-gray-100");
-                navcontent.classList.add("bg-white");
-            } else {
-                header.classList.remove("bg-white");
-                navaction.classList.remove("gradient");
-                navaction.classList.add("bg-white");
-                navaction.classList.remove("text-white");
-                navaction.classList.add("text-gray-800");
-                //Use to switch toggleColour colours
-                for (var i = 0; i < toToggle.length; i++) {
-                    toToggle[i].classList.add("text-white");
-                    toToggle[i].classList.remove("text-gray-800");
-                }
-
-                header.classList.remove("shadow");
-                navcontent.classList.remove("bg-white");
-                navcontent.classList.add("bg-gray-100");
-            }
-        });
-    </script>
-    <script>
-        /*Toggle dropdown list*/
-        /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-
-        var navMenuDiv = document.getElementById("nav-content");
-        var navMenu = document.getElementById("nav-toggle");
-
-        document.onclick = check;
-
-        function check(e) {
-            var target = (e && e.target) || (event && event.srcElement);
-
-            //Nav Menu
-            if (!checkParent(target, navMenuDiv)) {
-                // click NOT on the menu
-                if (checkParent(target, navMenu)) {
-                    // click on the link
-                    if (navMenuDiv.classList.contains("hidden")) {
-                        navMenuDiv.classList.remove("hidden");
-                    } else {
-                        navMenuDiv.classList.add("hidden");
-                    }
-                } else {
-                    // click both outside link and outside menu, hide menu
-                    navMenuDiv.classList.add("hidden");
-                }
-            }
-        }
-
-        function checkParent(t, elm) {
-            while (t.parentNode) {
-                if (t == elm) {
-                    return true;
-                }
-                t = t.parentNode;
-            }
-            return false;
-        }
-    </script>
+    @yield('scripts')
 </body>
 
 </html>
