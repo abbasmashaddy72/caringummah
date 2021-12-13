@@ -36,6 +36,7 @@ class DoctorFactory extends Factory
             'monthly_slots' => rand(10, 30),
             'extra_services' => null,
             'suggestions' => null,
+            'about' => $this->faker->realText(100, 3),
         ];
     }
 }

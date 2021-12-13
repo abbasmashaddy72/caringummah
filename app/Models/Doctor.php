@@ -24,11 +24,17 @@ class Doctor extends Model implements Auditable
         'monthly_slots',
         'extra_services',
         'suggestions',
+        'about'
     ];
 
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+
+    public function services()
+    {
+        return $this->belongsTo(Service::class, 'department_id', 'department_id');
     }
 
     public function appointment()

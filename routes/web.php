@@ -23,10 +23,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('welcome');
+Route::get('doctors', [HomeController::class, 'doctor_index'])->name('doctor_index');
 
 Route::post('response/store', [ResponseController::class, 'store'])->name('response.store');
 
-Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/doctors', function () {
