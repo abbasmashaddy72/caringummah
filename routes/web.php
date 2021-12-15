@@ -23,9 +23,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('welcome');
+Route::get('hidayyah', [HomeController::class, 'hidayyah_index'])->name('hidayyah_index');
+Route::get('sunday', [HomeController::class, 'sunday_index'])->name('sunday_index');
+
 Route::get('doctors', [HomeController::class, 'doctor_index'])->name('doctor_index');
+Route::post('doctor/store', [DoctorController::class, 'store'])->name('doctor.store');
 
 Route::post('response/store', [ResponseController::class, 'store'])->name('response.store');
+
+Route::post('get-cities-by-state', [CityLocalityController::class, 'getCity']);
+Route::post('get-localities-by-cities', [CityLocalityController::class, 'getLocality']);
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -54,8 +61,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', 'verified']]
         return view('responses');
     })->name('responses');
 
+    Route::get('/services', function () {
+        return view('services');
+    })->name('services');
+
     Route::get('doctor/create', [DoctorController::class, 'create'])->name('doctor.create');
-    Route::post('doctor/store', [DoctorController::class, 'store'])->name('doctor.store');
     Route::get('doctor/edit/{id}', [DoctorController::class, 'edit'])->name('doctor.edit');
     Route::post('doctor/update/{id}', [DoctorController::class, 'update'])->name('doctor.update');
     Route::post('doctor/destroy/{id}', [DoctorController::class, 'destroy'])->name('doctor.destroy');
@@ -85,6 +95,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', 'verified']]
     Route::post('appointment/update/{id}', [AppointmentController::class, 'update'])->name('appointment.update');
     Route::post('appointment/destroy/{id}', [AppointmentController::class, 'destroy'])->name('appointment.destroy');
 
-    Route::post('get-cities-by-state', [CityLocalityController::class, 'getCity']);
-    Route::post('get-localities-by-cities', [CityLocalityController::class, 'getLocality']);
+    Route::get('service/create', [ServiceController::class, 'create'])->name('service.create');
+    Route::post('service/store', [ServiceController::class, 'store'])->name('service.store');
+    Route::get('service/edit/{id}', [ServiceController::class, 'edit'])->name('service.edit');
+    Route::post('service/update/{id}', [ServiceController::class, 'update'])->name('service.update');
+    Route::post('service/destroy/{id}', [ServiceController::class, 'destroy'])->name('service.destroy');
 });

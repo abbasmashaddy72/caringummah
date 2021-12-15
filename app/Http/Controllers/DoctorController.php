@@ -9,6 +9,7 @@ use App\Models\Doctor;
 use App\Models\Locality;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 
 class DoctorController extends Controller
 {
@@ -44,10 +45,27 @@ class DoctorController extends Controller
     public function store(DoctorRequest $request)
     {
         $request->validated();
+        if (!empty($request->popup_image)) {
+            $newImageName1 = Str::random(20) . '.' . $request->popup_image->extension();
+            $request->popup_image->move(public_path('images/doctors/popup'), $newImageName1);
+        } else {
+            $newImageName1 = null;
+        }
+
+        if (!empty($request->photo)) {
+            $newImageName2 = Str::random(20) . '.' . $request->photo->extension();
+            $request->photo->move(public_path('images/doctors'), $newImageName2);
+        } else {
+            $newImageName2 = null;
+        }
+
         Doctor::create([
             'name' => $request->name,
             'qualification' => $request->qualification,
             'phone' => $request->phone,
+            'photo' => $newImageName2,
+            'about' => $request->about,
+            'popup_image' => $newImageName1,
             'clinic_hospital_name' => $request->hospital_name,
             'clinic_hospital_address' => $request->hospital_address,
             'clinic_hospital_phone' => $request->hospital_phone,
@@ -57,7 +75,11 @@ class DoctorController extends Controller
             'locality_id' => $request->locality_id,
             'department_id' => $request->department_id,
         ]);
-        return redirect()->route('doctors')->with('message', 'Doctor Added Successfully');
+        if (url()->previous() == url('/doctors')) {
+            return redirect()->to('/doctors/#contact_us')->with('message', 'Thanks, For Joining With Us.');
+        } else {
+            return redirect()->route('doctors')->with('message', 'Doctor Added Successfully');
+        }
     }
 
     /**
@@ -99,10 +121,27 @@ class DoctorController extends Controller
     public function update(DoctorRequest $request, $id)
     {
         $request->validated();
+        $data = Doctor::findOrFail($id);
+        if (!empty($request->popup_image)) {
+            $newImageName1 = Str::random(20) . '.' . $request->popup_image->extension();
+            $request->popup_image->move(public_path('images/doctors/popup'), $newImageName1);
+        } else {
+            $newImageName1 = $data->popup_image;
+        }
+
+        if (!empty($request->photo)) {
+            $newImageName2 = Str::random(20) . '.' . $request->photo->extension();
+            $request->photo->move(public_path('images/doctors'), $newImageName2);
+        } else {
+            $newImageName2 = $data->photo;
+        }
         Doctor::findOrFail($id)->update([
             'name' => $request->name,
             'qualification' => $request->qualification,
             'phone' => $request->phone,
+            'photo' => $newImageName2,
+            'about' => $request->about,
+            'popup_image' => $newImageName1,
             'clinic_hospital_name' => $request->hospital_name,
             'clinic_hospital_address' => $request->hospital_address,
             'clinic_hospital_phone' => $request->hospital_phone,

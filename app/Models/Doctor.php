@@ -24,6 +24,7 @@ class Doctor extends Model implements Auditable
         'monthly_slots',
         'extra_services',
         'suggestions',
+        'popup_image',
         'about'
     ];
 

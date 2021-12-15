@@ -7,6 +7,7 @@ use App\Models\Connection;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Response;
+use App\Models\Service;
 use App\Models\Ummah;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Asantibanez\LivewireCharts\Models\LineChartModel;
@@ -103,12 +104,13 @@ class DashboardController extends Controller
         );
 
         $doctor_count = Doctor::count();
+        $services_count = Service::count();
         $ummah_count = Ummah::count();
         $patient_count = Patient::count();
         $appointment_count = Appointment::count();
         $connection_count = Connection::count();
         $response_count = Response::count();
 
-        return view('dashboard', compact(['doctor_count', 'ummah_count', 'patient_count', 'appointment_count', 'pieChartModel1', 'pieChartModel2', 'pieChartModel3', 'pieChartModel4', 'lineChartModel', 'response_count', 'connection_count']));
+        return view('dashboard', compact(['doctor_count', 'services_count', 'ummah_count', 'patient_count', 'appointment_count', 'pieChartModel1', 'pieChartModel2', 'pieChartModel3', 'pieChartModel4', 'lineChartModel', 'response_count', 'connection_count']));
     }
 }

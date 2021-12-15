@@ -20,7 +20,7 @@
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Search</label>
                 <input type="search" id="search" wire:model="searchTerm"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required autofocus>
+                    required @if (url()->previous() != url('/doctors')) autofocus @endif>
             </div>
         </div>
     </div>
@@ -84,19 +84,18 @@
                                 <!--body-->
                                 <div class="grid grid-cols-1 gap-4 p-6 md:grid-cols-2 lg:grid-cols-2">
                                     <div>
-                                        <h1 class="font-semibold text-gray-900 text-l lg:text-2xl dark:text-white">
-                                            {{ __('Services') }}</h1>
                                         <a href="tel:{{ get_static_option('contact_1') }}"
-                                            class="inline-flex items-center px-4 py-2 mt-5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Book
+                                            class="inline-flex items-center px-4 py-2 text-m font-semibold text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Book
                                             Appointment</a>
+                                        <h1 class="font-semibold text-gray-900 text-l mt-5 lg:text-2xl dark:text-white">
+                                            {{ __('Services') }}</h1>
                                         <div class="mt-5 list-none">
                                             @if (!empty($doctor->services->titles))
                                                 @foreach (explode(',', $doctor->services->titles) as $item)
                                                     <li class="text-gray-500">{{ $item }}</li>
                                                 @endforeach
                                             @else
-                                                <li class="text-gray-500">{{ __('No Services Available') }}
-                                                </li>
+                                                <li class="text-gray-500">{{ __('No Services Available') }}</li>
                                             @endif
                                         </div>
                                     </div>
@@ -141,6 +140,55 @@
                 $('#location').on('change', function(e) {
                     var data = $('#location').select2("val");
                     @this.set('searchLocality', data);
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#department_id').select2();
+                $("#selState").select2();
+                $("#selCity").select2();
+                $("#selLocality").select2();
+                $('#selState').on('change', function() {
+                    var state_id = this.value;
+                    $("#selCity").html('');
+                    $.ajax({
+                        url: "{{ url('get-cities-by-state') }}",
+                        type: "POST",
+                        data: {
+                            state_id: state_id,
+                            _token: '{{ csrf_token() }}'
+                        },
+                        dataType: 'json',
+                        success: function(result) {
+                            $.each(result.cities, function(key, value) {
+                                $("#selCity").append('<option value="' + value.id +
+                                    '">' + value.name + '</option>');
+                            });
+                            $('#selLocality').html(
+                                '<option value="">-- Select City First --</option>');
+                        }
+                    });
+                });
+                $('#selCity').on('change', function() {
+                    var city_id = this.value;
+                    $("#selLocality").html('');
+                    $.ajax({
+                        url: "{{ url('get-localities-by-cities') }}",
+                        type: "POST",
+                        data: {
+                            city_id: city_id,
+                            _token: '{{ csrf_token() }}'
+                        },
+                        dataType: 'json',
+                        success: function(result) {
+                            $.each(result.localities, function(key, value) {
+                                $("#selLocality").append('<option value="' + value.id +
+                                    '">' + value.name + '</option>');
+                            });
+                        }
+                    });
+
                 });
             });
         </script>

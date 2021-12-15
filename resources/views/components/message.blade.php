@@ -2,7 +2,7 @@
     <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)"
         class="relative flex items-center justify-between px-3 py-3 bg-green-200 rounded-lg text-white-600">
         <div>
-            <span class="font-semibold text-white-700">{{ Session::get('message') }}</span>
+            <span class="font-semibold text-gray-700">{{ Session::get('message') }}</span>
         </div>
         <div>
             <button type="button" @click="show = false" class="text-yellow-700 ">

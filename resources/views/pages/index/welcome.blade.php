@@ -28,7 +28,7 @@
             </div>
             <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
                 <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg ">
-                    <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                    <a href="{{ route('hidayyah_index') }}" class="flex flex-wrap no-underline hover:no-underline">
                         <div class="w-full px-6 text-xl font-bold text-gray-800">
                             Hidayyah for Ummah
                         </div>
@@ -70,7 +70,7 @@
             </div>
             <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
                 <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg ">
-                    <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                    <a href="{{ route('sunday_index') }}" class="flex flex-wrap no-underline hover:no-underline">
                         <div class="w-full px-6 text-xl font-bold text-gray-800">
                             Sunday Clinics for the Poor
                         </div>

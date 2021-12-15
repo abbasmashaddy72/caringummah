@@ -15,6 +15,8 @@ class AddAboutInDoctorsTable extends Migration
     {
         Schema::table('doctors', function (Blueprint $table) {
             $table->string('about')->nullable()->after('phone');
+            $table->string('popup_image')->nullable()->after('about');
+            $table->string('photo')->nullable()->after('popup_image');
         });
     }
 
@@ -27,6 +29,8 @@ class AddAboutInDoctorsTable extends Migration
     {
         Schema::table('doctors', function (Blueprint $table) {
             $table->dropColumn('about');
+            $table->dropColumn('popup_image');
+            $table->dropColumn('photo');
         });
     }
 }
