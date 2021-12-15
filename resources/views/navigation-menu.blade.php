@@ -48,6 +48,17 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('hidayyahImages') }}"
+                        :active="request()->routeIs('hidayyahImages')">
+                        {{ __('Hidayyah Images') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('sundayImages') }}" :active="request()->routeIs('sundayImages')">
+                        {{ __('Sunday Images') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('responses') }}" :active="request()->routeIs('responses')">
                         {{ __('Responses') }}
                     </x-jet-nav-link>
@@ -158,6 +169,18 @@
             <x-jet-responsive-nav-link href="{{ route('appointments') }}"
                 :active="request()->routeIs('appointments')">
                 {{ __('Appointments') }}
+            </x-jet-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('hidayyahImages') }}"
+                :active="request()->routeIs('hidayyahImages')">
+                {{ __('Hidayyah Images') }}
+            </x-jet-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('sundayImages') }}"
+                :active="request()->routeIs('sundayImages')">
+                {{ __('Sunday Images') }}
             </x-jet-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
