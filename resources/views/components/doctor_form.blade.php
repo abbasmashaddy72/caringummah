@@ -69,7 +69,8 @@
                             </div>
                             <div class="p-2 lg:w-1/2">
                                 <div class="relative">
-                                    <label class="text-sm leading-7 text-gray-600">City</label>
+                                    <label
+                                        class="text-sm leading-7 text-gray-600">City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                     <select id='selCity' name="city"
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                         <option value=''>-- Select State First --</option>
@@ -109,7 +110,7 @@
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                 </div>
                             </div>
-                            <div class="lg:w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label class="text-sm leading-7 text-gray-600">Clinic/Hospital
                                         Phone</label>
@@ -117,10 +118,6 @@
                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                 </div>
                             </div>
-
-                            <br>
-                            <br>
-
                             <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label class="text-sm leading-7 text-gray-600">Clinic/Hospital
@@ -138,7 +135,7 @@
                                         class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"></textarea>
                                 </div>
                             </div>
-                            <div class="lg:w-1/2 p-2">
+                            <div class="p-2 lg:w-1/2">
                                 <div class="relative">
                                     <label class="text-sm leading-7 text-gray-600">About You (What
                                         Patients want to Know about You?)</label>
@@ -146,9 +143,9 @@
                                         class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"></textarea>
                                 </div>
                             </div>
-                            <div class="lg:w-1/2 p-2">
-                                <div class="mb-3 w-80">
-                                    <label for="formFile" class="form-label inline-block mb-2 text-gray-700">Please
+                            <div class="p-2 lg:w-1/2">
+                                <div class="w-auto mb-3">
+                                    <label for="formFile" class="inline-block mb-2 text-gray-700 form-label">Please
                                         Upload your Images</label>
                                     <input
                                         class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"

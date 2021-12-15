@@ -1,5 +1,5 @@
 <div>
-    <div class="container m-8 mx-auto max-w-7xl">
+    <div class="container p-2 m-8 mx-auto max-w-7xl">
         <div class="flex flex-wrap mb-8 -mx-2">
             <div class="w-full px-2 mb-4 md:w-2/5 lg:w-2/5" wire:ignore>
                 <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select
@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="container m-8 mx-auto max-w-7xl">
+    <div class="container p-2 m-8 mx-auto max-w-7xl">
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
             @if ($doctors && $doctors->count() > 0)
                 @foreach ($doctors as $doctor)
@@ -60,7 +60,7 @@
                     </div>
                     <div class="fixed inset-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto outline-none focus:outline-none"
                         id="{{ str_replace([' ', '.'], '_', $doctor->name) }}">
-                        <div class="relative w-auto max-w-6xl mx-auto my-6">
+                        <div class="relative w-auto h-full max-w-6xl mx-auto my-6">
                             <!--content-->
                             <div
                                 class="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
@@ -85,9 +85,9 @@
                                 <div class="grid grid-cols-1 gap-4 p-6 md:grid-cols-2 lg:grid-cols-2">
                                     <div>
                                         <a href="tel:{{ get_static_option('contact_1') }}"
-                                            class="inline-flex items-center px-4 py-2 text-m font-semibold text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Book
+                                            class="inline-flex items-center px-4 py-2 font-semibold text-center text-white bg-blue-700 rounded-lg text-m hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Book
                                             Appointment</a>
-                                        <h1 class="font-semibold text-gray-900 text-l mt-5 lg:text-2xl dark:text-white">
+                                        <h1 class="mt-5 font-semibold text-gray-900 text-l lg:text-2xl dark:text-white">
                                             {{ __('Services') }}</h1>
                                         <div class="mt-5 list-none">
                                             @if (!empty($doctor->services->titles))
@@ -100,13 +100,13 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                            The European Union’s General Data Protection Regulation (G.D.P.R.) goes into
-                                            effect on May 25 and is meant to ensure a common set of data rights in the
-                                            European Union. It requires organizations to notify users as soon as
-                                            possible of
-                                            high-risk data breaches that could personally affect them.
-                                        </p>
+                                        @if (!empty($doctor->popup_image))
+                                            <img src="{{ asset('images/doctors/popup/' . $doctor->popup_image) }}">
+                                        @else
+                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                {{ $doctor->about }}
+                                            </p>
+                                        @endif
                                     </div>
                                 </div>
                                 <!--footer-->
