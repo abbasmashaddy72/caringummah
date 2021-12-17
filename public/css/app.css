@@ -1190,14 +1190,14 @@ select {
 .-m-4 {
 	margin: -1rem;
 }
+.m-0 {
+	margin: 0px;
+}
 .m-2 {
 	margin: 0.5rem;
 }
 .m-8 {
 	margin: 2rem;
-}
-.m-0 {
-	margin: 0px;
 }
 .m-auto {
 	margin: auto;
@@ -1345,6 +1345,9 @@ select {
 .ml-0 {
 	margin-left: 0px;
 }
+.mb-2 {
+	margin-bottom: 0.5rem;
+}
 .mb-8 {
 	margin-bottom: 2rem;
 }
@@ -1359,9 +1362,6 @@ select {
 }
 .-mt-12 {
 	margin-top: -3rem;
-}
-.mb-2 {
-	margin-bottom: 0.5rem;
 }
 .mr-0 {
 	margin-right: 0px;
@@ -3432,10 +3432,6 @@ select {
 
 	.md\:border-l {
 		border-left-width: 1px;
-	}
-
-	.md\:p-2 {
-		padding: 0.5rem;
 	}
 
 	.md\:px-16 {

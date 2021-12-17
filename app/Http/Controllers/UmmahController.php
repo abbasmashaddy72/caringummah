@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UmmahRequest;
+use App\Imports\UmmahImport;
 use App\Models\City;
 use App\Models\Connection;
 use App\Models\Locality;
@@ -11,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UmmahController extends Controller
 {
@@ -170,5 +172,12 @@ class UmmahController extends Controller
         $age = Carbon::parse($ummah->date_of_birth)->diff(Carbon::now())->format('%y years');
 
         return view('profile.id_card', compact('ummah', 'age'));
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new UmmahImport(), $request->import);
+
+        return redirect()->route('doctors')->with('message', 'Ummah Imported Successfully');
     }
 }

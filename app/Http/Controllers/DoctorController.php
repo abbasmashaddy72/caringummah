@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DoctorRequest;
+use App\Imports\DoctorImport;
 use App\Models\City;
 use App\Models\Department;
 use App\Models\Doctor;
@@ -10,6 +11,7 @@ use App\Models\Locality;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DoctorController extends Controller
 {
@@ -108,7 +110,7 @@ class DoctorController extends Controller
         $locality_id = $data->locality_id;
         $action = URL::route('doctor.update', ['id' => $id]);
 
-        return view('forms/doctor_ea', compact('data', 'dept_data', 'action', 'city_id', 'state_id', 'locality_id'));
+        return view('forms.doctor_ea', compact('data', 'dept_data', 'action', 'city_id', 'state_id', 'locality_id'));
     }
 
     /**
@@ -165,5 +167,12 @@ class DoctorController extends Controller
         Doctor::findOrFail($id)->delete();
 
         return redirect()->route('doctors')->with('message', 'Doctor Deleted Successfully');
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new DoctorImport(), $request->import);
+
+        return redirect()->route('doctors')->with('message', 'Doctor Imported Successfully');
     }
 }

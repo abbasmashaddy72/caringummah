@@ -23,6 +23,8 @@ class UmmahFactory extends Factory
      */
     public function definition()
     {
+        $this->faker->addProvider(new \Bezhanov\Faker\Provider\Demographic($this->faker));
+        $this->faker->addProvider(new \Bezhanov\Faker\Provider\Team($this->faker));
         $family_members = ['father', 'mother', 'son', 'daughter', 'husband', 'wife', 'brother', 'sister', 'grandfather', 'grandmother', 'grandson', 'granddaughter', 'uncle', 'aunt', 'nephew', 'niece', 'cousin'];
 
         return [

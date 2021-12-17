@@ -61,6 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', 'verified']]
     Route::get('doctor/edit/{id}', [DoctorController::class, 'edit'])->name('doctor.edit');
     Route::post('doctor/update/{id}', [DoctorController::class, 'update'])->name('doctor.update');
     Route::post('doctor/destroy/{id}', [DoctorController::class, 'destroy'])->name('doctor.destroy');
+    Route::post('doctor/import', [DoctorController::class, 'import'])->name('doctor.import');
 
     Route::get('/connections', function () {
         return view('connections');
@@ -80,6 +81,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', 'verified']]
     Route::get('ummah/edit/{id}', [UmmahController::class, 'edit'])->name('ummah.edit');
     Route::post('ummah/update/{id}', [UmmahController::class, 'update'])->name('ummah.update');
     Route::post('ummah/destroy/{id}', [UmmahController::class, 'destroy'])->name('ummah.destroy');
+    Route::post('ummah/import', [UmmahController::class, 'import'])->name('ummah.import');
 
     Route::get('/patients', function () {
         return view('patients');
