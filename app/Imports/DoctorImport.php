@@ -4,17 +4,12 @@ namespace App\Imports;
 
 use App\Models\Department;
 use App\Models\Doctor;
+use App\Models\Locality;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class DoctorImport implements ToModel, WithHeadingRow
 {
-    private $departments;
-
-    public function __construct()
-    {
-        $this->departments = Department::get();
-    }
     /**
      * @param array $row
      *
@@ -41,20 +36,23 @@ class DoctorImport implements ToModel, WithHeadingRow
             $clinic_hospital_name = $row['clinic_hospital_name'];
         }
 
-        $department = $this->departments->where('title', 'like', '%' . $row['department'] . '%')->first();
+        $department = Department::where('title', $row['department'])->first();
+        $locality_id = Locality::where('name', $row['locality'])->first();
 
         return new Doctor([
             'name' => $row['name'],
-            'department_id' => $department->id ?? 15,
+            'department_id' => $department->id ?? 22,
             'qualification' => $row['qualification'],
             'phone' => str_replace(' ', '', $row['phone']),
-            'locality_id' => 100,
+            'locality_id' => $locality_id->id ?? 38010,
             'clinic_hospital_name' => $clinic_hospital_name,
             'clinic_hospital_address' => $clinic_hospital_name,
             'clinic_hospital_phone' => $clinic_hospital_phone,
             'monthly_slots' => $monthly_slots,
             'extra_services' => $row['extra_services'],
             'suggestions' => $row['suggestions'],
+            'photo' => $row['photo'],
+            'about' => $row['about'],
         ]);
     }
 }

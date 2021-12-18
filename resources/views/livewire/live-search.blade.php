@@ -90,6 +90,11 @@
                                         <h1 class="mt-5 font-semibold text-gray-900 text-l lg:text-2xl dark:text-white">
                                             {{ __('Services') }}</h1>
                                         <div class="mt-5 list-none">
+                                            @if (!empty($doctor->extra_services))
+                                                @foreach (explode(';', $doctor->extra_services) as $item)
+                                                    <li class="text-gray-500">{{ $item }}</li>
+                                                @endforeach
+                                            @endif
                                             @if (!empty($doctor->services->titles))
                                                 @foreach (explode(',', $doctor->services->titles) as $item)
                                                     <li class="text-gray-500">{{ $item }}</li>
@@ -107,6 +112,12 @@
                                                 {{ $doctor->about }}
                                             </p>
                                         @endif
+                                        <h1 class="mt-5 font-semibold text-gray-900 text-l lg:text-xl dark:text-white">
+                                            {{ __('Clinic Address') }}</h1>
+                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                            <b>{{ $doctor->clinic_hospital_name }}</b> <br>
+                                            {{ $doctor->clinic_hospital_address }}
+                                        </p>
                                     </div>
                                 </div>
                                 <!--footer-->

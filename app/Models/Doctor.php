@@ -25,7 +25,8 @@ class Doctor extends Model implements Auditable
         'extra_services',
         'suggestions',
         'popup_image',
-        'about'
+        'about',
+        'photo'
     ];
 
     public function department()

@@ -25,14 +25,12 @@ class DoctorRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255', 'min:3'],
-            'qualification' => ['required', 'max:255', 'min:3'],
+            'qualification' => ['required', 'max:255', 'min:2'],
             'phone' => ['required', 'string'],
             'hospital_name' => ['required', 'min:1'],
             'hospital_address' => ['required', 'min:1'],
             'hospital_phone' => ['required', 'min:1'],
             'monthly_slots' => ['required', 'min:1'],
-            'extra_services' => ['string'],
-            'suggestions' => ['string'],
             'locality_id' => ['required']
         ];
     }

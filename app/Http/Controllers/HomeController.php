@@ -28,11 +28,11 @@ class HomeController extends Controller
 
     public function doctor_index()
     {
-        $ayath = get_static_option('ayath_1');
-        $translation = get_static_option('translation_1');
-        $reference = get_static_option('reference_1');
-        $contact = get_static_option('contact_1');
-        $image = get_static_option('image_1');
+        $ayath = get_static_option('ayath_2');
+        $translation = get_static_option('translation_2');
+        $reference = get_static_option('reference_2');
+        $contact = get_static_option('contact_2');
+        $image = get_static_option('image_2');
         $dept_data = Department::get();
         $states = State::get(['name', 'id']);
 
