@@ -34,6 +34,10 @@
                 </li>
                 <li class="mr-3">
                     <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
+                        href="{{ route('doctor_index') }}">Doctors</a>
+                </li>
+                <li class="mr-3">
+                    <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
                         href="#contact_us">Contact Us</a>
                 </li>
             </ul>

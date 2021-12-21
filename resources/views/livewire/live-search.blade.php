@@ -108,10 +108,13 @@
                                         @if (!empty($doctor->popup_image))
                                             <img src="{{ asset('images/doctors/popup/' . $doctor->popup_image) }}">
                                         @else
-                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                {{ $doctor->about }}
-                                            </p>
+                                            <img src="{{ asset('images/doctors/popup/no-image.jpg') }}">
                                         @endif
+                                        <h1 class="mt-5 font-semibold text-gray-900 text-l lg:text-xl dark:text-white">
+                                            {{ __('About') }}</h1>
+                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                            {{ $doctor->about }}
+                                        </p>
                                         <h1 class="mt-5 font-semibold text-gray-900 text-l lg:text-xl dark:text-white">
                                             {{ __('Clinic Address') }}</h1>
                                         <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
@@ -139,6 +142,11 @@
                 <div class="flex justify-center">
                     <div class="text-gray-800">No Doctors found</div>
                 </div>
+            @endif
+        </div>
+        <div class="mt-5">
+            @if (method_exists($doctors, 'links'))
+                {{ $doctors->links() }}
             @endif
         </div>
     </div>

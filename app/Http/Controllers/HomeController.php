@@ -28,6 +28,9 @@ class HomeController extends Controller
 
     public function doctor_index()
     {
+        // $check = Doctor::with('department', 'services', 'locality')->paginate(9);
+        // echo $check;
+        // exit;
         $ayath = get_static_option('ayath_2');
         $translation = get_static_option('translation_2');
         $reference = get_static_option('reference_2');
