@@ -46,6 +46,8 @@ class DoctorController extends Controller
      */
     public function store(DoctorRequest $request)
     {
+        Doctor::disableAuditing();
+
         $request->validated();
         if (!empty($request->popup_image)) {
             $newImageName1 = Str::random(20) . '.' . $request->popup_image->extension();
@@ -77,6 +79,9 @@ class DoctorController extends Controller
             'locality_id' => $request->locality_id,
             'department_id' => $request->department_id,
         ]);
+
+        Doctor::enableAuditing();
+
         if (url()->previous() == url('/doctors')) {
             return redirect()->to('/doctors/#contact_us')->with('message', 'Thanks, For Joining With Us.');
         } else {

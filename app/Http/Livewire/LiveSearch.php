@@ -69,44 +69,44 @@ class LiveSearch extends Component
                 ->get();
         } elseif (!empty($this->searchTerm) && in_array($this->searchLocality, $doc_locations->pluck('locality_id')->toArray())) {
             $data0 = Doctor::with('department', 'services', 'locality')
-                ->where('locality_id', $this->searchLocality)
+                // ->where('locality_id', $this->searchLocality)
                 ->where('qualification', 'LIKE', '%' . $this->searchTerm . '%')
-                ->orderBy('locality_id', 'DESC')
+                // ->orderBy('locality_id', 'DESC')
                 ->orderBy('name', 'ASC')
                 ->get();
 
             $data1 = Doctor::with('department', 'services', 'locality')
-                ->where('locality_id', $this->searchLocality)
+                // ->where('locality_id', $this->searchLocality)
                 ->where('name', 'LIKE', '%' . $this->searchTerm . '%')
-                ->orderBy('locality_id', 'DESC')
+                // ->orderBy('locality_id', 'DESC')
                 ->orderBy('name', 'ASC')
                 ->get();
 
             $data2 = Doctor::with('department', 'services', 'locality')
-                ->where('locality_id', $this->searchLocality)
+                // ->where('locality_id', $this->searchLocality)
                 ->where('extra_services', 'LIKE', '%' . $this->searchTerm . '%')
-                ->orderBy('locality_id', 'DESC')
+                // ->orderBy('locality_id', 'DESC')
                 ->orderBy('name', 'ASC')
                 ->get();
 
             $data3 = Doctor::with('department', 'services', 'locality')
-                ->where('locality_id', $this->searchLocality)
+                // ->where('locality_id', $this->searchLocality)
                 ->whereRelation('department', 'title', 'LIKE', '%' . $this->searchTerm . '%')
-                ->orderBy('locality_id', 'DESC')
+                // ->orderBy('locality_id', 'DESC')
                 ->orderBy('name', 'ASC')
                 ->get();
 
             $data4 = Doctor::with('department', 'services', 'locality')
-                ->where('locality_id', $this->searchLocality)
+                // ->where('locality_id', $this->searchLocality)
                 ->whereRelation('services', 'titles', 'LIKE', '%' . $this->searchTerm . '%')
-                ->orderBy('locality_id', 'DESC')
+                // ->orderBy('locality_id', 'DESC')
                 ->orderBy('name', 'ASC')
                 ->get();
 
             $doctors = $data0->merge($data1)->merge($data2)->merge($data3)->merge($data4);
         } else {
 
-            $doctors = Doctor::with('department', 'services', 'locality')->paginate(9);
+            $doctors = Doctor::with('department', 'services', 'locality')->orderBy('name', 'ASC')->paginate(9);
         }
 
         return view('livewire.live-search', compact('doc_locations', 'static_location', 'doctors'));

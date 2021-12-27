@@ -1,7 +1,9 @@
 <nav id="header" class="fixed top-0 z-30 w-full text-white">
     <div class="container flex flex-wrap items-center justify-between w-full py-2 mx-auto mt-0 ">
         <div class="flex items-center pl-4">
-            @include('components.svg')
+            <a href="/">
+                <img src="{{ asset('images/website/logo.png') }}" alt="Caring Ummah" style="max-height: 60px">
+            </a>
             <a class="text-2xl font-bold text-white no-underline toggleColour hover:no-underline lg:text-4xl" href="/">
                 <!--Icon from: http://www.potlabicons.com/ -->
 
@@ -43,7 +45,7 @@
             </ul>
             <a href="{{ route('login') }}">
                 <button id="navAction"
-                    class="px-8 py-4 mx-auto mt-4 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow opacity-90 lg:mx-0 hover:underline lg:mt-0 focus:outline-none focus:shadow-outline hover:scale-105">
+                    class="hidden px-8 py-4 mx-auto mt-4 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow opacity-90 lg:mx-0 hover:underline lg:mt-0 focus:outline-none focus:shadow-outline hover:scale-105">
                     Login
                 </button>
             </a>

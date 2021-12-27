@@ -50,7 +50,7 @@ class ResponseController extends Controller
             'created_at' => Carbon::now(),
         ]);
 
-        return redirect()->route('welcome')->with('message', 'Thanks For Feedback');
+        return redirect()->to('/#contact_us')->with('message', 'Thanks For Feedback');
     }
 
     /**
