@@ -82,8 +82,8 @@ class DoctorController extends Controller
 
         Doctor::enableAuditing();
 
-        if (url()->previous() == url('/doctors')) {
-            return redirect()->to('/doctors/#contact_us')->with('message', 'Thanks, For Joining With Us.');
+        if (url()->previous() == url('/doctors/contact_us')) {
+            return redirect()->to('/doctors/contact_us')->with('message', 'Thanks, For Joining With Us.');
         } else {
             return redirect()->route('doctors')->with('message', 'Doctor Added Successfully');
         }

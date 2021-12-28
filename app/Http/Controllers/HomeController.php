@@ -83,4 +83,25 @@ class HomeController extends Controller
             'image'
         ]));
     }
+
+    public function doctor_contact_us()
+    {
+        $ayath = get_static_option('ayath_2');
+        $translation = get_static_option('translation_2');
+        $reference = get_static_option('reference_2');
+        $contact = get_static_option('contact_2');
+        $image = get_static_option('image_2');
+        $dept_data = Department::get();
+        $states = State::get(['name', 'id']);
+
+        return view('pages.doctor_contact', compact([
+            'ayath',
+            'translation',
+            'reference',
+            'contact',
+            'image',
+            'dept_data',
+            'states'
+        ]));
+    }
 }

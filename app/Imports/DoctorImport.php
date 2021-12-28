@@ -49,10 +49,10 @@ class DoctorImport implements ToModel, WithHeadingRow
             'clinic_hospital_address' => $clinic_hospital_name,
             'clinic_hospital_phone' => $clinic_hospital_phone,
             'monthly_slots' => $monthly_slots,
-            'extra_services' => $row['extra_services'],
-            'suggestions' => $row['suggestions'],
-            'photo' => $row['photo'],
-            'about' => $row['about'],
+            'extra_services' => $row['extra_services'] ?? null,
+            'suggestions' => $row['suggestions'] ?? null,
+            'photo' => $row['photo'] ?? null,
+            'about' => $row['about'] ?? null,
         ]);
     }
 }

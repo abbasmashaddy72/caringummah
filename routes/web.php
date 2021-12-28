@@ -28,6 +28,7 @@ Route::get('hidayyah', [HomeController::class, 'hidayyah_index'])->name('hidayya
 Route::get('sunday', [HomeController::class, 'sunday_index'])->name('sunday_index');
 
 Route::get('doctors', [HomeController::class, 'doctor_index'])->name('doctor_index');
+Route::get('doctors/contact_us', [HomeController::class, 'doctor_contact_us'])->name('doctor_contact');
 Route::post('doctor/store', [DoctorController::class, 'store'])->name('doctor.store');
 
 Route::post('response/store', [ResponseController::class, 'store'])->name('response.store');

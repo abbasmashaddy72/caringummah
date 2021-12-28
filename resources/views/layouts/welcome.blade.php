@@ -76,11 +76,7 @@
             </g>
         </g>
     </svg>
-    @if (Route::currentRouteName() != 'doctor_index')
-        @include('components.contact_form')
-    @else
-        @include('components.doctor_form')
-    @endif
+    @include('components.contact_form')
     <script>
         var scrollpos = window.scrollY;
         var header = document.getElementById("header");

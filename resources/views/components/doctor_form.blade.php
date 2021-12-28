@@ -1,25 +1,12 @@
 <section id="contact_us" class="container py-6 mx-auto mb-12">
     <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-wrap -m-4">
-            <div class="w-full p-4 mt-40 text-center md:w-1/2">
-                <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white ">
-                    Join Hands With Us
-                </h1>
-                <div class="w-full mb-4">
-                    <div class="w-1/6 h-1 py-0 mx-auto my-0 bg-white rounded-t opacity-25"></div>
+            <div class="relative z-10 flex flex-col w-full p-4 p-8 mt-10 md:ml-auto md:mt-0">
+                <div class="rounded-lg bg-light-blue-100 gradient">
+                    <h2 class="font-semibold text-center text-white lg:m-5 sm:m-3 lg:text-6xl sm:text-3xl title-font">
+                        Join Hands With Us
+                    </h2>
                 </div>
-                <h3 class="my-4 text-3xl leading-tight">
-                    <!-- Caring about your Happiness as -->
-                    To Serve & Strengthen the Society.
-                </h3>
-                <button
-                    class="px-8 py-4 mx-auto my-6 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow-lg lg:mx-0 hover:underline focus:outline-none focus:shadow-outline hover:scale-105">
-                    <a href="tel:+91-74165-45740">Contact Us!</a>
-                </button>
-            </div>
-            <div
-                class="relative z-10 flex flex-col w-full p-4 p-8 mt-10 bg-white rounded-lg shadow-md md:w-1/2 md:ml-auto md:mt-0">
-                <h2 class="mb-1 text-lg font-medium text-center text-gray-900 title-font">Join Hands With Us</h2>
                 <div class="max-w-full py-4 sm:px-6 lg:px-8">
                     <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
                         @include('components.message')

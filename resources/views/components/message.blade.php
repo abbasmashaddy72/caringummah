@@ -1,4 +1,4 @@
-@if (Session::has('message'))
+@if (Session::has('message') && Route::currentRouteName() != 'doctor_contact')
     <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)"
         class="relative flex items-center justify-between px-3 py-3 bg-green-200 rounded-lg text-white-600">
         <div>
