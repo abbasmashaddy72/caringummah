@@ -46,8 +46,8 @@
                             <span class="text-sm text-gray-500 dark:text-gray-400">{{ $doctor->department->title }} |
                                 {{ $doctor->locality->name }}</span>
                             <div class="flex mt-4 space-x-3 lg:mt-6">
-                                <a href="tel:{{ get_static_option('contact_1') }}"
-                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Book
+                                <a onclick="toggleModal('{{ str_replace([' ', '.'], '_', $doctor->name . 2) }}')"
+                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Book
                                     Appointment</a>
                                 <a class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:cursor-pointer hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-800"
                                     type="button"
@@ -59,6 +59,49 @@
                                 class="px-5 mt-5 text-sm text-gray-500 dark:text-gray-400">{{ $doctor->about }}</span>
                         </div>
                     </div>
+                    <div class="fixed inset-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto outline-none focus:outline-none"
+                        id="{{ str_replace([' ', '.'], '_', $doctor->name . 2) }}">
+                        <div class="relative h-full max-w-3xl mx-auto my-6 w-96">
+                            <!--content-->
+                            <div
+                                class="relative flex flex-col max-w-3xl bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
+                                <!--header-->
+                                <div
+                                    class="flex items-start justify-between p-5 border-b border-solid rounded-t border-blueGray-200">
+                                    <h3 class="text-3xl font-semibold text-gray-900 lg:text-2xl dark:text-white">
+                                        Dr. {{ $doctor->name }}
+                                    </h3>
+                                    <button type="button"
+                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                        onclick="toggleModal('{{ str_replace([' ', '.'], '_', $doctor->name . 2) }}')">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <!--body-->
+                                <div class="max-w-2xl p-6 bg-white">
+                                    <div class="mt-4">
+                                        @livewire('call-count-form', ['doctor_id' => $doctor->id], key($doctor->id))
+                                    </div>
+                                </div>
+                                <!--footer-->
+                                <div
+                                    class="flex items-center justify-end p-6 border-t border-solid rounded-b border-blueGray-200">
+                                    <button
+                                        onclick="toggleModal('{{ str_replace([' ', '.'], '_', $doctor->name . 2) }}')"
+                                        type="button"
+                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:cursor-pointer hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-800">
+                                        Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fixed inset-0 z-40 hidden bg-black opacity-25"
+                        id="{{ str_replace([' ', '.'], '_', $doctor->name . 2) }}-backdrop"></div>
                     <div class="fixed inset-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto outline-none focus:outline-none"
                         id="{{ str_replace([' ', '.'], '_', $doctor->name) }}">
                         <div class="relative w-auto h-full max-w-6xl mx-auto my-6">
@@ -85,9 +128,9 @@
                                 <!--body-->
                                 <div class="grid grid-cols-1 gap-4 p-6 md:grid-cols-2 lg:grid-cols-2">
                                     <div>
-                                        <a href="tel:{{ get_static_option('contact_1') }}"
+                                        {{-- <a href="tel:{{ get_static_option('contact_1') }}"
                                             class="inline-flex items-center px-4 py-2 font-semibold text-center text-white bg-blue-700 rounded-lg text-m hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Book
-                                            Appointment</a>
+                                            Appointment</a> --}}
                                         <h1 class="mt-5 font-semibold text-gray-900 text-l lg:text-2xl dark:text-white">
                                             {{ __('Services') }}</h1>
                                         <div class="mt-5 list-none">

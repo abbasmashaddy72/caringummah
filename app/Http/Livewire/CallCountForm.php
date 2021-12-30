@@ -9,12 +9,8 @@ use Livewire\Component;
 class CallCountForm extends Component
 {
     public $name;
-
     public $phone;
-
     public $doctor_id;
-
-    public $updateMode = false;
 
     private function resetInputFields()
     {
@@ -36,15 +32,12 @@ class CallCountForm extends Component
     {
         $validatedData = $this->validate();
 
-        $this->updateMode = true;
-        // $contact_number = Doctor::findOrFail($this->doctor_id)->phone;
-        $contact_number = Doctor::findOrFail(1)->phone;
+        $contact_number = Doctor::findOrFail($this->doctor_id)->clinic_hospital_phone;
         CallCount::create(
             [
-                // 'doctor_id' => $this->doctor_id,
+                'doctor_id' => $this->doctor_id,
                 'name' => $this->name,
                 'phone' => $this->phone,
-                'doctor_id' => 1,
                 'dialed_number' => $contact_number,
             ]
         );
@@ -52,12 +45,6 @@ class CallCountForm extends Component
         $this->resetInputFields();
 
         return redirect()->to('tel://' . $contact_number);
-    }
-
-    public function cancel()
-    {
-        $this->updateMode = false;
-        $this->resetInputFields();
     }
 
     public function render()
