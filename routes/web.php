@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\CallCountController;
 use App\Http\Controllers\CityLocalityController;
 use App\Http\Controllers\ConnectionController;
 use App\Http\Controllers\DashboardController;
@@ -42,6 +43,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', 'verified']]
     Route::get('/responses', function () {
         return view('responses');
     })->name('responses');
+
+    Route::get('/call_counts', function () {
+        return view('call_counts');
+    })->name('call_counts');
 
     Route::get('/hidayyahImages', function () {
         return view('hidayyahImages');
