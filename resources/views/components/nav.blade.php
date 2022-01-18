@@ -5,8 +5,6 @@
                 <img src="{{ asset('images/website/logo.png') }}" alt="Caring Ummah" style="max-height: 60px">
             </a>
             <a class="text-2xl font-bold text-white no-underline toggleColour hover:no-underline lg:text-4xl" href="/">
-                <!--Icon from: http://www.potlabicons.com/ -->
-
                 Caring Ummah
             </a>
         </div>
@@ -24,23 +22,25 @@
             <ul class="items-center justify-end flex-1 list-reset lg:flex">
                 <li class="mr-3">
                     <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
-                        href="#">Home</a>
+                        href="{{ route('welcome') }}">Home</a>
                 </li>
-                <li class="mr-3">
-                    <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
-                        href="#about">Mission</a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
-                        href="#khidmath">Khidmath</a>
-                </li>
+                @if (request()->routeIs('welcome'))
+                    <li class="mr-3">
+                        <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
+                            href="#about">Mission</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
+                            href="#khidmath">Khidmath</a>
+                    </li>
+                @endif
                 <li class="mr-3">
                     <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
                         href="{{ route('doctor_index') }}">Doctors</a>
                 </li>
                 <li class="mr-3">
                     <a class="inline-block px-4 py-2 text-white no-underline toggleColour hover:text-gray-800 hover:text-underline"
-                        href="#contact_us">Contact Us</a>
+                        @if (request()->routeIs('doctor*')) href="{{ route('doctor_contact') . '#jh' }}" @else href="#contact_us" @endif>Contact Us</a>
                 </li>
             </ul>
             <a href="{{ route('login') }}">

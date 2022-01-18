@@ -33,6 +33,7 @@ class LiveSearch extends Component
 
         $doc_locations = Doctor::with('locality')->groupBy('locality_id')->get('locality_id');
         $static_location = Locality::whereIn('city_id', [26, 71])->get();
+        $doctor_counts = Doctor::count();
 
         if (!empty($this->searchTerm) && empty($this->searchLocality)) {
 
@@ -109,6 +110,6 @@ class LiveSearch extends Component
             $doctors = Doctor::with('department', 'services', 'locality')->orderBy('name', 'ASC')->paginate(9);
         }
 
-        return view('livewire.live-search', compact('doc_locations', 'static_location', 'doctors'));
+        return view('livewire.live-search', compact('doc_locations', 'static_location', 'doctors', 'doctor_counts'));
     }
 }

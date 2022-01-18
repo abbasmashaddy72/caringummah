@@ -1,5 +1,10 @@
 <div>
     <div class="container p-2 m-8 mx-auto max-w-7xl">
+        <div class="flex justify-end">
+            <p class="text-gray-900">
+                Total Doctors: <span class="text-green-800">{{ $doctor_counts }}</span>
+            </p>
+        </div>
         <div class="flex flex-wrap mb-8 -mx-2">
             <div class="w-full px-2 mb-4 md:w-2/5 lg:w-2/5" wire:ignore>
                 <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select
@@ -18,10 +23,14 @@
             <div class="w-full px-2 mb-4 md:w-3/5 lg:w-3/5">
                 <label for="search"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Search</label>
-                <input type="search" id="search" wire:model="searchTerm"
+                <input type="search" id="search" wire:model.debounce.300ms="searchTerm"
                     placeholder="Speciality / Service / Doctors Name Without Dr"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-9/12 lg:w-10/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required @if (url()->previous() != url('/doctors')) autofocus @endif>
+                <button
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:cursor-pointer hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <p class="text-lg font-semibold">Search</p>
+                </button>
             </div>
         </div>
     </div>
@@ -42,7 +51,8 @@
                             <h3 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Dr.
                                 {{ $doctor->name }}
                             </h3>
-                            <span class="text-sm text-gray-500 dark:text-gray-400">{{ $doctor->qualification }}</span>
+                            <span
+                                class="text-sm text-gray-500 dark:text-gray-400">{{ $doctor->qualification }}</span>
                             <span class="text-sm text-gray-500 dark:text-gray-400">{{ $doctor->department->title }} |
                                 {{ $doctor->locality->name }}</span>
                             <div class="flex mt-4 space-x-3 lg:mt-6">

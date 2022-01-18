@@ -76,7 +76,9 @@
             </g>
         </g>
     </svg>
-    @include('components.contact_form')
+    @if (request()->routeIs('welcome') || request()->routeIs('hidayyah_index') || request()->routeIs('sunday_index'))
+        @include('components.contact_form')
+    @endif
     <script>
         var scrollpos = window.scrollY;
         var header = document.getElementById("header");
